@@ -1,19 +1,19 @@
 package Hardware;
 
-public class Host implements Structures{
+public class Host2 implements Structures{
 	static private int id=0;
 	private int uniqueID=0;
 	private double average;
 	private double max;
 	
-	public Host(){
+	public Host2(){
 		id++;
 		this.uniqueID=id;
 		this.max=-1;
 		this.average=-1;
 	}
 	
-	public Host(double max, double average){
+	public Host2(double max, double average){
 		id++;
 		this.uniqueID=id;
 		this.max=max;
