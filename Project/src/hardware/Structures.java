@@ -1,4 +1,4 @@
-package Hardware;
+package hardware;
 
 public interface Structures {
 	double getMax(Object O);

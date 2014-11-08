@@ -1,5 +1,4 @@
-package Hardware;
-
+package hardware;
 import java.util.ArrayList;
 import java.util.List;
 

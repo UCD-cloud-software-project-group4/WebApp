@@ -53,7 +53,8 @@ public class DataRedirection {
     
     // appends text (as a String) to a file. Each String appended goes to a new line in the file
     static void appendTextToFile (String input, String location) throws FileNotFoundException {
-        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(location , true)))) {
+        try{
+        	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(location , true)));
             out.println(input);
         }catch (IOException e) {
             
@@ -64,8 +65,8 @@ public class DataRedirection {
         File file = new File(location);
         String content = input;
         
-        try (FileOutputStream fop = new FileOutputStream(file)) {
-            
+        try {
+        	FileOutputStream fop = new FileOutputStream(file);
             // if file doesn't exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
