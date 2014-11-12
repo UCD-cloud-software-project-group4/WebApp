@@ -27,4 +27,8 @@ public class DateParser {
 	 System.out.println(new DateParser(1970, 2, 1).parse());
 	}
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

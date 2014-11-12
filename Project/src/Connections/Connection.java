@@ -1,6 +1,6 @@
 /* This class enables the creation of a Connection object which is the basis for making a HTTP request to the Papillon system. Also,
  * you can request to retrieve the data obtained from such a connection and send data via the connection.   */
-package Connections;
+package connections;
 
 
 import java.io.IOException;
@@ -56,31 +56,66 @@ public class Connection {
         }
     }
     // retrieves the JSON data and sends it to the specified file
-    void getDataContent( String newFile) throws MalformedURLException, IOException{
+    String getDataContent( String newFile) throws MalformedURLException, IOException{
+        String result = "";
         try {
             HttpURLConnection newConnection= this.connection;
-            String result = DataRedirection.httpToJSON(newConnection);
+            result = DataRedirection.httpToJSON(newConnection);
             System.out.println(result);
             
             DataRedirection.writeTextToFile(result, newFile);
+            
 	    }
         
         catch (IOException MalformedURLException) {
             System.out.println("problem getting data");
 	    }
+        
+        return result;
     }
     
-    public void makeRequest(Connection connection, String location){
-		try {
+    
+    String getDataContent() {
+        String result = "";
+        try {
+            HttpURLConnection newConnection= this.connection;
+            result = DataRedirection.httpToJSON(newConnection);
+            System.out.println(result);
+	    }
+        
+        catch (IOException MalformedURLException) {
+            System.out.println("problem getting data");
+	    }
+        
+        return result;
+        
+    }
+    
+    String makeRequest(Connection connection, String location){
+        String result = "";
+        try {
 			connection.connect();
-			connection.getDataContent(location);
+			result =connection.getDataContent(location);
 			connection.closeConnect();
 		} catch (IOException e) {
 			System.out.println("Problem with input");
 			e.printStackTrace();
 		}
-		
+		return result;
 	}
+    
+    String makeRequest(Connection connection){
+		String result = "";
+        try {
+            connection.connect();
+            result =connection.getDataContent();
+            connection.closeConnect();
+        } catch (IOException e) {
+            System.out.println("Problem with input");
+            e.printStackTrace();
+        }
+        return result;
+    }
     
     
     // closes the connection
@@ -89,7 +124,7 @@ public class Connection {
     }
     
     public static void main (String args[]) throws MalformedURLException, IOException {
-        /* here is an example for how the classes and objects work. Create a connection object and then use the
+        /* here is an example for how the classes and objects work. Create a connection object and then use the 
          * various methods to retrieve data */
         
         String url = "http://localhost:8080/papillonserver/rest/datacenters/1/allfloors"; // this can be any of the URLs from the Papillon API

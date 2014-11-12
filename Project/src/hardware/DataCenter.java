@@ -1,4 +1,8 @@
 package hardware;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 

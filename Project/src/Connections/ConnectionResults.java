@@ -1,4 +1,4 @@
-package Connections;
+package connections;
 
 public class ConnectionResults{
 	static String URL;
@@ -35,63 +35,66 @@ public class ConnectionResults{
 		host_id = new_host_id;
 	}
 	
-	public void getRacks(){
+	public String getRacks(){
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/allracks";
 		storeLocation ="/home/papillon/Desktop/getRackUsage.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result=connection.makeRequest(connection);
+		
+		return result;
 	}
 	
-	public void getHosts(){
+	public String getHosts(){
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/allhosts";
-		storeLocation ="/home/papillon/Desktop/getRackUsage.txt";
+		storeLocation ="/home/papillon/Desktop/getHosts.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result = connection.makeRequest(connection);
+		
+		return result;
 	}
 	
-	public void getUsage(int rack_id){
-		//URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id +"/floors/"+ floor_id + "/racks/" + rack_id +"/power?";
-		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/allracks";
+	public String getUsage(int rack_id){
+		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id +"/floors/"+ floor_id + "/racks/" + rack_id +"/power?";
 		storeLocation ="/home/papillon/Desktop/getRackUsage.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result = connection.makeRequest(connection);
+		
+		return result;
 		
 	}
 	
-	public void getActivity(int rack_id){
+	public String getActivity(int rack_id){
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id +"/floors/"+ floor_id + "/racks/" + rack_id +"/activity?";
 	    storeLocation ="/home/papillon/Desktop/getRackActivity.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result = connection.makeRequest(connection);
+		
+		return result;
 	}
 	
-	public void getUsage(int rack_id, int host_id){
+	public String getUsage(int rack_id, int host_id){
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id +"/floors/"+ floor_id + "/racks/" + rack_id +"/hosts/" + host_id + "/power?";
 		storeLocation ="/home/papillon/Desktop/getHostActivity.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result =connection.makeRequest(connection);
+		
+		return result;
 	}
 	
-	public void getActivity(int rack_id, int host_id){
+	public String getActivity(int rack_id, int host_id){
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id +"/floors/"+ floor_id + "/racks/" + rack_id + "/hosts/" + host_id + "/activity?";
 	    storeLocation ="/home/papillon/Desktop/getHostActivity.txt";
 		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
+		String result = connection.makeRequest(connection);
+		
+		return result;
 	}
-	
-	public void test(){
-		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/floors/1/racks/1/hosts/1/activity?starttime=0&endtime=1415375850";
-		storeLocation ="/home/papillon/Desktop/getRackUsage.txt";
-		Connection connection = new Connection(URL);
-		connection.makeRequest(connection, storeLocation);
-	}
-	
-	
 	
 	
 	public static void main (String args []){
 		ConnectionResults connection = new ConnectionResults(1, 1);
-		connection.test();
+		String test = connection.getHosts();
+		System.out.println(test);
 		
 	}
 	
