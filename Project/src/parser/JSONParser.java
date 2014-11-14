@@ -6,7 +6,11 @@ public class JSONParser {
 		key = "hostExtended";
 		JSONObject obj = new JSONObject(wholeJSONList);
 		JSONArray array = obj.getJSONArray(key);
+<<<<<<< Updated upstream
 		return array;		
+=======
+		return array;
+>>>>>>> Stashed changes
 	}
 	
 	
@@ -16,6 +20,10 @@ public class JSONParser {
 		String rack = obj.getString(element);
 		return rack;
 	}
+<<<<<<< Updated upstream
 }
 	
 	
+=======
+}
+>>>>>>> Stashed changes
