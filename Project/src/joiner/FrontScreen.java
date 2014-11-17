@@ -133,7 +133,7 @@ public class FrontScreen {
 		for(Floor floor:datacenters.get(0).dc_floors){
 			for(Rack rack: floor.floor_racks){
 				output+=("\t<div class=\"rack\">\n");
-				output+=("\t\t<div id=\"rackinner"+ floor.floor_id+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
+				output+=("\t\t<div id=\"rackinner"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
 				for(Host host:rack.rack_hosts){
 					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.jpg\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
 				}
@@ -147,9 +147,14 @@ public class FrontScreen {
 			
 			
 		}
+		reset();
 		return output;
 	}
 	
+	public static void reset(){
+		datacenters= new ArrayList<DataCenter>();
+		
+	}
 	
 	
 	public static void start(){
