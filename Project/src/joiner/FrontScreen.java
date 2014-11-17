@@ -57,7 +57,9 @@ public class FrontScreen {
 		
 		outerloop:
 		for(DataCenter datacenter:datacenters){
+
 			if(tempDCid == datacenter.dc_id){
+				
 				for(Floor floor: datacenter.dc_floors){
 					if(floor.getID()==tempFloorid){
 						break outerloop;
@@ -73,7 +75,7 @@ public class FrontScreen {
 	
 	/**Adds the racks as a list to the relevant floors*/
 	private static void addRack(){
-		boolean foundFloor=false;
+		
 		
 		outerloop:
 		for(DataCenter datacenter:datacenters){

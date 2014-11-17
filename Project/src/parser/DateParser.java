@@ -19,10 +19,6 @@ public class DateParser {
 	public static void main(String[] args){
 		System.out.println(new DateParser(1970, 2, 1).parse());
 	}
-<<<<<<< HEAD
+
 
 }
-=======
-    
-}
->>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc
