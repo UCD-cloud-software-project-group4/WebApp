@@ -16,7 +16,7 @@ public class ConnectionResults{
 		
 	}
 	
-	ConnectionResults(int new_dc_id, int new_floor_id){
+	public ConnectionResults(int new_dc_id, int new_floor_id){
 		dc_id = new_dc_id;
 		floor_id = new_floor_id;
 	}

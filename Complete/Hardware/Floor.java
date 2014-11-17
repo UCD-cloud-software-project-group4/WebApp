@@ -1,4 +1,4 @@
-package hardware;
+package Hardware;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ public class Floor implements Structures{
 		floor_id = 0;
 	}
 	
-	public Floor(int dc_id, int floor_id){
+	public Floor(int dc_id, int floor_id, List<Rack> floor_racks){
 		this.floor_racks = floor_racks;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
@@ -48,18 +48,13 @@ public class Floor implements Structures{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return floor_id;
+		return 0;
 	}
 
 	@Override
 	public int setID() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	public List<Rack> getRacks(){
-		
-		return floor_racks;
 	}
 	
 //	public String showRacks(){

@@ -1,6 +1,7 @@
-package hardware;
+package Hardware;
 
 public class Host implements Structures {
+
 	// Left these as public but we can change to private and have get ids
 	// instead?
 	public int dc_id;
@@ -33,17 +34,6 @@ public class Host implements Structures {
 	public int getID() {
 		return host_id;
 	}
-	
-	public int getFloor(){
-		return floor_id;
-		
-	}
-	
-	public int getRack(){
-		return rack_id;
-		
-	}
-
 
 	@Override
 	public double getMax(Object O) {
@@ -56,9 +46,10 @@ public class Host implements Structures {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	public String toString() {
+	
+	public String toString(){
 		String to_string = "Host ID: " + host_id;
 		return to_string;
 	}
+	
 }

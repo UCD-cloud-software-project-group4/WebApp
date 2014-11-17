@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<%@page import="hardware.Host" %>
+
+<%@page import="joiner.FrontScreen"%>
 
 
 <html lang="en">
@@ -78,20 +79,14 @@
       }
     </style>
     <script>
-    <%//This initiates 8 different server objects
-    Host one =new Host();
-    Host two =new Host();
-    Host three =new Host();
-    Host four =new Host();
-    Host five =new Host();
-    Host six =new Host();
-    Host seven=new Host();
-    Host eight =new Host();
-    eight.resetCounter();%>
+    <%//Initiates all the datacenters, floors, racks and hosts
+     
+    %>
+    
 	//These arrays hold the power information for each server
-    var serverID = ["<%=one.getID()%>", "<%=two.getID()%>", "<%=three.getID()%>", "<%=four.getID()%>", "<%=five.getID()%>", "<%=six.getID()%>", "<%=seven.getID()%>", "<%=eight.getID()%>"];
-    var max = ["<%=one.getMax()%>", "<%=two.getMax()%>", "<%=three.getMax()%>", "<%=four.getMax()%>", "<%=five.getMax()%>", "<%=six.getMax()%>", "<%=seven.getMax()%>", "<%=eight.getMax()%>"];
-    var average = ["<%=one.getAverage()%>", "<%=two.getAverage()%>", "<%=three.getAverage()%>", "<%=four.getAverage()%>", "<%=five.getAverage()%>", "<%=six.getAverage()%>", "<%=seven.getAverage()%>", "<%=eight.getAverage()%>"];
+    var serverID = [<% out.print(FrontScreen.hostToString()); %>];
+    var max = [];
+    var average = [];
 
     var images = 8;
     
@@ -128,8 +123,7 @@
         ev.target.appendChild(document.getElementById(data));
 
         images--;
-        //change();
-        //alert("server added to rack 2" + this);
+  
     }
   
     function allowDrop(ev) {
@@ -149,7 +143,10 @@
   <body>
 
     <div id="test">Racks and Servers</div>
-
+    
+    
+    <%= FrontScreen.serverAndRackCreation() %>
+<!-- 
     <div class="rack">
       <div id="rackinner1"  ondrop="drop(event)" ondragover="allowDrop(event)">
         <img name="server" onClick="displayServerInfo(this, 0)" src="server.jpg" id="drag0" draggable="true" ondragstart="drag(event)"/>
@@ -168,7 +165,7 @@
     <div class="rack">
       <div id="rackinner2" ondrop="drop(event)" ondragover="allowDrop(event) ">
       </div>
-    </div>
+    </div>    -->
     
     <div id="sysinfo"></div>
 

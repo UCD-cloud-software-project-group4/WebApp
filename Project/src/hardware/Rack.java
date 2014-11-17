@@ -4,38 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rack implements Structures{
-	List<Host> rack_hosts = new ArrayList<Host>();
-	private static int rack_id = 1;
+	public List<Host> rack_hosts = new ArrayList<Host>();
+	private int rack_id;
+	public int floor_id;
+	public  int dc_id;
 	
-	public Rack(int id){
-		this.rack_id=id;		
-		this.rack_hosts = getHosts();
+	public Rack(int dc_id, int floor_id, int rack_id){
+		this.dc_id=dc_id;
+		this.rack_id=rack_id;
+		this.floor_id = floor_id;
+		this.rack_hosts = rack_hosts;
 	}
 	
 	
-	public List getHosts(){
-		Host one = new Host();
-		rack_hosts.add(one);
-		Host two = new Host();
-		rack_hosts.add(two);
-		Host three = new Host();
-		rack_hosts.add(three);
-		Host four = new Host();
-		rack_hosts.add(four);
-		Host five = new Host();
-		rack_hosts.add(five);
-		
-		
-		return rack_hosts;
-	}
 	
-	public void addHost(Host h){
-		rack_hosts.add(h);
-	}
 	
-	public void removeHost(Host h){
-		rack_hosts.remove(h);
-	}
 	
 	@Override
 	public double getMax(Object O) {
@@ -52,7 +35,7 @@ public class Rack implements Structures{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return rack_id;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package hardware;
+package Hardware;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class DataCenter implements Structures{
 		dc_floors = null;
 	}
 	
-	public DataCenter(int dc_id) {
+	public DataCenter(int dc_id, List<Floor> dc_floors) {
 		this.dc_id = dc_id;		
 		this.dc_floors = dc_floors;
 	}
@@ -40,18 +40,13 @@ public class DataCenter implements Structures{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return dc_id;
+		return 0;
 	}
 
 	@Override
 	public int setID() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	public List<Floor> getFloors(){
-		
-		return dc_floors;
 	}
 	
 //	public String toString(){
