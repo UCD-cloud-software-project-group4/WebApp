@@ -12,7 +12,7 @@ public class ConnectionResults{
 	
 	
 	
-	ConnectionResults(){
+	public ConnectionResults(){
 		
 	}
 	
@@ -21,14 +21,14 @@ public class ConnectionResults{
 		floor_id = new_floor_id;
 	}
 	
-	ConnectionResults(int new_dc_id, int new_floor_id, int new_rack_id){
+	public ConnectionResults(int new_dc_id, int new_floor_id, int new_rack_id){
 		dc_id = new_dc_id;
 		floor_id = new_floor_id;
 		rack_id = new_rack_id;
 	}
 	
 	//To be used if looking to create a results for a given Host/server
-	ConnectionResults(int new_dc_id, int new_floor_id, int new_rack_id, int new_host_id){
+	public ConnectionResults(int new_dc_id, int new_floor_id, int new_rack_id, int new_host_id){
 		dc_id = new_dc_id;
 		floor_id = new_floor_id;
 		rack_id = new_rack_id;

@@ -15,7 +15,11 @@ public class Floor implements Structures{
 		floor_id = 0;
 	}
 	
+<<<<<<< HEAD
 	public Floor(int dc_id, int floor_id){
+=======
+	public Floor(int dc_id, int floor_id, List<Rack> floor_racks){
+>>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc
 		this.floor_racks = floor_racks;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
@@ -38,25 +42,26 @@ public class Floor implements Structures{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+    
 	@Override
 	public double getAverage() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+    
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return floor_id;
 	}
-
+    
 	@Override
 	public int setID() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
+<<<<<<< HEAD
 	public List<Rack> getRacks(){
 		
 		return floor_racks;
@@ -72,10 +77,26 @@ public class Floor implements Structures{
 //		}
 //		return racks;		
 //	}
+=======
+    /*	public String showRacks(){
+    		Iterator<Rack> i = new
+    
+    
+    		String racks = floor_racks.iterator().next().toString();
+    		while(floor_racks.iterator().hasNext()){
+    			racks += " " + floor_racks.iterator().next().toString();
+    		}
+    		return racks;
+    */	}
+>>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc
 	
 	public String toString(){
 		String to_string = "Floor ID: " + floor_id;
 		return to_string;
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc

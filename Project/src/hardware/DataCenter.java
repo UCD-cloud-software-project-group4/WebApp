@@ -8,12 +8,21 @@ public class DataCenter implements Structures{
 	public int dc_id;
 	
 	public DataCenter() {
+<<<<<<< HEAD
 		dc_id = 0;;		
 		dc_floors = null;
 	}
 	
 	public DataCenter(int dc_id) {
 		this.dc_id = dc_id;		
+=======
+		dc_id = 0;;
+		dc_floors = null;
+	}
+	
+	public DataCenter(int dc_id, List<Floor> dc_floors) {
+		this.dc_id = dc_id;
+>>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc
 		this.dc_floors = dc_floors;
 	}
 	
@@ -30,25 +39,26 @@ public class DataCenter implements Structures{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+    
 	@Override
 	public double getAverage() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+    
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return dc_id;
 	}
-
+    
 	@Override
 	public int setID() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
+<<<<<<< HEAD
 	public List<Floor> getFloors(){
 		
 		return dc_floors;
@@ -61,3 +71,12 @@ public class DataCenter implements Structures{
 //	}
 
 }
+=======
+    /*	public String toString(){
+    		String value = "DataCenter ID: " + dc_id + " Floors: " + dc_floors.iterator().next().toString() + " Racks: " + dc_floors.iterator().next().showRacks();
+     	 return value;
+    	
+    */	}
+    
+}
+>>>>>>> 3de10dcc58d4bb99cb0df574a79cbca3bcb531dc
