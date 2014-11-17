@@ -1,6 +1,10 @@
 package joiner;
 
-import java.sql.Array;
+import hardware.DataCenter;
+import hardware.Floor;
+import hardware.Host;
+import hardware.Rack;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import parser.JSONParser;
-import hardware.*;
-import connections.*;
 
 public class FrontScreen {
 	static List<DataCenter> datacenters = new ArrayList<DataCenter>();
@@ -130,15 +132,15 @@ public class FrontScreen {
 		String output="";
 		for(Floor floor:datacenters.get(0).dc_floors){
 			for(Rack rack: floor.floor_racks){
-				output+=("<div class=\"rack\">\n");
-				output+=("\t<div id=\"rackinner"+ floor.floor_id+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
+				output+=("\t<div class=\"rack\">\n");
+				output+=("\t\t<div id=\"rackinner"+ floor.floor_id+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
 				for(Host host:rack.rack_hosts){
-					output+=("\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.jpg\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
+					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.jpg\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
 				}
 				
 				
+				output+=("\t\t</div>\n");
 				output+=("\t</div>\n");
-				output+=("</div>\n");
 				
 				
 			}
