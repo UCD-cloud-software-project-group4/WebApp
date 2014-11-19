@@ -13,7 +13,7 @@ public class DateParser {
 	}
 	/**Returns the date in milliseconds*/
 	public long parse(){
-		return cal.getTimeInMillis();
+		return cal.getTimeInMillis()/1000;
 	}
     
 	public static void main(String[] args){
