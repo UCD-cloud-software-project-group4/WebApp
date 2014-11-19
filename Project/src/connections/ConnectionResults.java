@@ -14,6 +14,10 @@ public class ConnectionResults {
 
 	public ConnectionResults() {
 	}
+	
+	public ConnectionResults(int new_dc_id) {
+		dc_id = new_dc_id;
+	}
 
 	public ConnectionResults(int new_dc_id, int new_floor_id) {
 		dc_id = new_dc_id;

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import connections.ConnectionResults;
 import parser.DateParser;
 import parser.JSONParser;
 
@@ -25,8 +26,8 @@ public class FrontScreen {
 	static int tempFloorid;
 	static int tempDCid;
 	static int tempHostid;
-	static long start;
-	static long end;
+	static long start = 1416400000;
+	static long end = 1416410374;
 	
 	public FrontScreen(){
 		
@@ -121,7 +122,7 @@ public class FrontScreen {
 	
 	public static String hostToString(){
 		String hosts="";
-		
+		start();		
 				
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
@@ -132,13 +133,14 @@ public class FrontScreen {
 				}
 			}
 		}
-		
+		reset();
 		return hosts;
 		//return hosts.substring(0,hosts.length()-1);
 	}
 	
 	public static String serverAndRackCreation(){
 		String output="";
+		start();
 		for(Floor floor:datacenters.get(0).getFloors()){
 			for(Rack rack: floor.getRacks()){
 				output+=("\t<div class=\"rack\">\n");
@@ -165,19 +167,12 @@ public class FrontScreen {
 		
 	}
 	
-	
-	public static void start(long start, long end){
-		
-	
-			
-		//ConnectionResults connection = new ConnectionResults(1, 1);
-		String test = "{\"hostExtended\":[{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"1\",\"hostName\":\"Host1\",\"hostDescription\":\"Host1\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"2\",\"hostName\":\"Host2\",\"hostDescription\":\"Host 2\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"3\",\"hostName\":\"Host3\",\"hostDescription\":\"Host 3\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"2\",\"rackName\":\"R2\",\"rackDescription\":\"Rack 2\",\"hostId\":\"4\",\"hostName\":\"Host4\",\"hostDescription\":\"Host 4\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"}]}";
-		// The info Papillon JSON returns is in a JSON array made up of JSON
-		// objects
-		JSONArray test2 = JSONParser.parseJson(test, "hostExtended");
-		
-		int number_of_hosts = test2.length();
-		
+	//public static void main(String[] args){
+	public static void start(){			
+		ConnectionResults connection = new ConnectionResults(1,1); //We know its DC 1 and floor 1
+		String result = connection.getHosts();
+		JSONArray test2 = JSONParser.parseJson(result, "hostExtended");		
+		int number_of_hosts = test2.length();	
 				
 		for (int x = 0; x < number_of_hosts; x++) {
 			json_object_holder = test2.getJSONObject(x);
@@ -191,14 +186,7 @@ public class FrontScreen {
 			addRack();
 			addHost();
 		}
-		/*
-		System.out.println("Datacenter: "+ datacenters.get(0).dc_id);
-		System.out.println("Floor: " + datacenters.get(0).dc_floors.get(0).floor_id);
-		System.out.println("Rack: "+ datacenters.get(0).dc_floors.get(0).floor_racks.get(1).getID());
-		System.out.println("Host: " + datacenters.get(0).dc_floors.get(0).floor_racks.get(0).rack_hosts.get(0).getID());
-		
-		System.out.println(hostToString());
-		*/
+
 	}
 	
 		
