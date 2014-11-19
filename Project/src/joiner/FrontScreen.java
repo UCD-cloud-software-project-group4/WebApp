@@ -25,8 +25,8 @@ public class FrontScreen {
 	static int tempFloorid;
 	static int tempDCid;
 	static int tempHostid;
-	static long start;
-	static long end;
+	static long start=22222222;
+	static long end=222222;
 	
 	public FrontScreen(){
 		
