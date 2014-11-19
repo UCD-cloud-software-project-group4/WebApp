@@ -1,9 +1,8 @@
-package hardware;
+package Hardware;
 
 public interface Structures {
-	double getMax(Object O);
-	double getAverage();
+	double getMax(long start_date, long end_date);
+	double getAverage(long start_date, long end_date);
 	int getID();
-	int setID();
 	
 }
