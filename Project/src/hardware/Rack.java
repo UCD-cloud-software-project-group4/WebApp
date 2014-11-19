@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import Connections.ConnectionResults;
+import connections.ConnectionResults;
 
 public class Rack implements Structures{
 	private List<Host> rack_hosts = new ArrayList<Host>();
@@ -97,7 +97,7 @@ public class Rack implements Structures{
 		host_list.add(host2);
 		host_list.add(host3);
 		host_list.add(host4);
-		Rack rack= new Rack(1,1,1,host_list,1416400000,1416404989);	
+		Rack rack= new Rack(1,1,1,1416400000,1416404989);	
 		System.out.println(rack.max);	
 		System.out.println(rack.average);
 	}

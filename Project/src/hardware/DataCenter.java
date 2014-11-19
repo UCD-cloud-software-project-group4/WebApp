@@ -1,4 +1,4 @@
-package Hardware;
+package hardware;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class DataCenter {
 		dc_floors = null;
 	}
 	
-	public DataCenter(int dc_id, List<Floor> dc_floors) {
+	public DataCenter(int dc_id) {
 		this.dc_id = dc_id;		
 		this.dc_floors = dc_floors;
 	}

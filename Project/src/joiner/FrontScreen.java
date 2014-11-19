@@ -5,12 +5,17 @@ import hardware.Floor;
 import hardware.Host;
 import hardware.Rack;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import parser.DateParser;
 import parser.JSONParser;
 
 public class FrontScreen {
@@ -20,9 +25,11 @@ public class FrontScreen {
 	static int tempFloorid;
 	static int tempDCid;
 	static int tempHostid;
+	static long start;
+	static long end;
 	
 	public FrontScreen(){
-		start();
+		
 		
 	}
 	
@@ -36,7 +43,7 @@ public class FrontScreen {
 		}
 		else{
 			for(DataCenter dc: datacenters){
-				if(tempDCid==dc.dc_id){
+				if(tempDCid==dc.getID()){
 					isUnique=false;
 					break;
 				}
@@ -58,16 +65,16 @@ public class FrontScreen {
 		outerloop:
 		for(DataCenter datacenter:datacenters){
 
-			if(tempDCid == datacenter.dc_id){
+			if(tempDCid == datacenter.getID()){
 				
-				for(Floor floor: datacenter.dc_floors){
+				for(Floor floor: datacenter.getFloors()){
 					if(floor.getID()==tempFloorid){
 						break outerloop;
 					}
 					
 				}
 				
-				datacenter.dc_floors.add(new Floor(tempDCid,tempFloorid));
+				datacenter.getFloors().add(new Floor(tempDCid,tempFloorid));
 				break;
 			}
 		}
@@ -79,16 +86,16 @@ public class FrontScreen {
 		
 		outerloop:
 		for(DataCenter datacenter:datacenters){
-			for(Floor floor: datacenter.dc_floors){
+			for(Floor floor: datacenter.getFloors()){
 				
-				if(tempDCid==floor.dc_id && tempFloorid == floor.floor_id){
-					for(Rack rack :floor.floor_racks){
+				if(tempDCid==floor.getDCID() && tempFloorid == floor.getID()){
+					for(Rack rack :floor.getRacks()){
 						if(rack.getID()==tempRackid){
 							break outerloop;
 						}
 					
-				}
-					floor.floor_racks.add(new Rack(tempDCid, tempFloorid, tempRackid));
+				}	//TODO input the start and end times
+					floor.getRacks().add(new Rack(tempDCid, tempFloorid, tempRackid,start, end));
 					break outerloop;
 				}
 			}
@@ -102,7 +109,8 @@ public class FrontScreen {
 			for(Floor floor: datacenter.getFloors()){
 				for(Rack rack: floor.getRacks()){
 					if(tempDCid==datacenter.getID()&&tempRackid==rack.getID()&&tempFloorid==floor.getID()){
-						rack.rack_hosts.add(new Host(tempDCid, tempFloorid, tempRackid, tempHostid));
+						//TODO Add start and end times
+						rack.getHosts().add(new Host(tempDCid, tempFloorid, tempRackid, tempHostid, start,end));
 						System.out.println(tempHostid);
 					}
 				}
@@ -114,29 +122,28 @@ public class FrontScreen {
 	public static String hostToString(){
 		String hosts="";
 		
-		start();
-		
+				
 		for(DataCenter dc: datacenters){
-			for(Floor floor:dc.dc_floors){
-				for(Rack rack:floor.floor_racks){
-					for(Host host:rack.rack_hosts){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					for(Host host:rack.getHosts()){
 						hosts+="\""+host.getID()+"\",";
 					}
 				}
 			}
 		}
 		
-		
-		return hosts.substring(0,hosts.length()-1);
+		return hosts;
+		//return hosts.substring(0,hosts.length()-1);
 	}
 	
 	public static String serverAndRackCreation(){
 		String output="";
-		for(Floor floor:datacenters.get(0).dc_floors){
-			for(Rack rack: floor.floor_racks){
+		for(Floor floor:datacenters.get(0).getFloors()){
+			for(Rack rack: floor.getRacks()){
 				output+=("\t<div class=\"rack\">\n");
 				output+=("\t\t<div id=\"rackinner"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
-				for(Host host:rack.rack_hosts){
+				for(Host host:rack.getHosts()){
 					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.jpg\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
 				}
 				
@@ -159,7 +166,7 @@ public class FrontScreen {
 	}
 	
 	
-	public static void start(){
+	public static void start(long start, long end){
 		
 	
 			
@@ -193,8 +200,31 @@ public class FrontScreen {
 		System.out.println(hostToString());
 		*/
 	}
-	}
-		
-		
-
 	
+		
+	public void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		
+		PrintWriter out = response.getWriter();
+		
+		out.println("<HTML>");
+		out.println("<head>");
+		out.println("<meta charset=\"utf-8\">");
+		out.println("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
+		out.println("</head>");
+		
+		
+		//Retrieve the dates needed to add to the hosts
+		String startDateString= request.getParameter("start");
+		String endDateString=request.getParameter("end");
+		
+		String[] date = startDateString.split("-");
+		//This converts the form date to an epoch time
+		start = new DateParser(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0])).parse();
+		
+		date=endDateString.split("-");
+		
+		end = new DateParser(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0])).parse();
+
+	}
+}

@@ -1,4 +1,4 @@
-package Hardware;
+package hardware;
 
 public interface Structures {
 	double getMax(long start_date, long end_date);

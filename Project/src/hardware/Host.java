@@ -2,7 +2,7 @@ package hardware;
 
 import org.json.JSONArray;
 
-import Connections.ConnectionResults;
+import connections.ConnectionResults;
 
 public class Host implements Structures {
 	private int dc_id;

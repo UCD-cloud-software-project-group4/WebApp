@@ -1,4 +1,4 @@
-package Hardware;
+package hardware;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Floor {
 		floor_id = 0;
 	}
 	
-	public Floor(int dc_id, int floor_id, List<Rack> floor_racks){
+	public Floor(int dc_id, int floor_id){
 		this.floor_racks = floor_racks;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
@@ -28,7 +28,7 @@ public class Floor {
 		floor_racks.remove(r);
 	}
 	
-	public List<Rack> getRacks(Rack id){
+	public List<Rack> getRacks(){
 		return floor_racks;
 	}
 
@@ -39,5 +39,7 @@ public class Floor {
 	public int getDCID(){
 		return dc_id;
 	}
+	
+	
 	
 }
