@@ -26,6 +26,8 @@ public class FrontScreen {
 	static int tempFloorid;
 	static int tempDCid;
 	static int tempHostid;
+	static String tempHostName;
+	static String tempRackName;
 
 	static long start = 1416400000;
 	static long end = 1416410374;
@@ -97,8 +99,8 @@ public class FrontScreen {
 							break outerloop;
 						}
 					
-				}	//TODO input the start and end times
-					floor.getRacks().add(new Rack(tempDCid, tempFloorid, tempRackid,start, end));
+				}	
+					floor.getRacks().add(new Rack(tempDCid, tempFloorid, tempRackid,tempRackName, start, end));
 					break outerloop;
 				}
 			}
@@ -112,8 +114,7 @@ public class FrontScreen {
 			for(Floor floor: datacenter.getFloors()){
 				for(Rack rack: floor.getRacks()){
 					if(tempDCid==datacenter.getID()&&tempRackid==rack.getID()&&tempFloorid==floor.getID()){
-						//TODO Add start and end times
-						rack.getHosts().add(new Host(tempDCid, tempFloorid, tempRackid, tempHostid, start,end));
+						rack.getHosts().add(new Host(tempDCid, tempFloorid, tempRackid, tempHostid,tempHostName,start,end));
 						System.out.println(tempHostid);
 					}
 				}
@@ -121,6 +122,33 @@ public class FrontScreen {
 		}
 	}
 
+	
+	
+	public static String serverAndRackCreation(){
+		start();
+		String output="<div id='serverInfo'><div id='information'><p>1</p><p>2</p><p>3</p><p>4</p></div></div>";
+		start();
+		for(Floor floor:datacenters.get(0).getFloors()){
+			for(Rack rack: floor.getRacks()){
+				output+=("\t<div class=\"rack\">\n");
+				output+=("\t\t<div class=\"rackinner"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
+				for(Host host:rack.getHosts()){
+					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.png\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
+				}
+				
+				
+				output+=("\t\t</div>\n");
+				output+=("<div class='addServer'><img src='addserver.png'></div><div class='rackInfo'><p>1</p><p>2</p><p>3</p><p>4</p></div>");
+				output+=("\t</div>\n");
+				
+				
+			}
+			
+			
+		}
+		reset();
+		return output;
+	}
 	
 	public static String hostToString(){
 		String hosts="";
@@ -138,8 +166,7 @@ public class FrontScreen {
 			}
 		}
 		reset();
-		return hosts;
-		//return hosts.substring(0,hosts.length()-1);
+		return hosts.substring(0,hosts.length()-1);
 	}
 	
 		public static String hostAverage(){
@@ -156,8 +183,7 @@ public class FrontScreen {
 			}
 		}
 		reset();
-		return hosts;
-		//return hosts.substring(0,hosts.length()-1);
+		return hosts.substring(0,hosts.length()-1);
 	}
 	
 	public static String hostMax(){
@@ -174,32 +200,87 @@ public class FrontScreen {
 			}
 		}
 		reset();
-		return hosts;
-		//return hosts.substring(0,hosts.length()-1);
+		return hosts.substring(0,hosts.length()-1);
 	}
-	public static String serverAndRackCreation(){
-		start();
-		String output="";
-		start();
-		for(Floor floor:datacenters.get(0).getFloors()){
-			for(Rack rack: floor.getRacks()){
-				output+=("\t<div class=\"rack\">\n");
-				output+=("\t\t<div id=\"rackinner"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
-				for(Host host:rack.getHosts()){
-					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.jpg\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
+	
+	public static String hostName(){
+		String hosts="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					for(Host host:rack.getHosts()){
+						hosts+="\""+host.getName()+"\",";
+					}
 				}
-				
-				
-				output+=("\t\t</div>\n");
-				output+=("\t</div>\n");
-				
-				
 			}
-			
-			
 		}
 		reset();
-		return output;
+		return hosts.substring(0,hosts.length()-1);
+	}
+	
+	public static String rackToString(){
+		String racks="";
+
+		start();
+
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					
+						racks +="\""+rack.getID()+"\",";
+				}
+			}
+		}
+		reset();
+		return racks.substring(0,racks.length()-1);
+	}
+	
+		public static String rackAverage(){
+		String racks="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+						racks+="\""+rack.getAverageFigure()+"\",";
+				}
+			}
+		}
+		reset();
+		return racks.substring(0,racks.length()-1);
+	}
+	
+	public static String rackMax(){
+		String racks="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+						racks+="\""+rack.getMaxFigure()+"\",";
+				}
+			}
+		}
+		reset();
+		return racks.substring(0,racks.length()-1);
+	}
+	
+	public static String rackName(){
+		String racks="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+						racks+="\""+rack.getName()+"\",";
+				}
+			}
+		}
+		reset();
+		return racks.substring(0,racks.length()-1);
 	}
 	
 	public static void reset(){
@@ -211,11 +292,13 @@ public class FrontScreen {
 	
 	//public static void main(String[] args){
 	public static void start(){			
+		reset();
 		ConnectionResults connection = new ConnectionResults(1,1); //We know its DC 1 and floor 1
 		//String result = "{\"hostExtended\":[{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"1\",\"hostName\":\"Host1\",\"hostDescription\":\"Host1\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"2\",\"hostName\":\"Host2\",\"hostDescription\":\"Host 2\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"1\",\"rackName\":\"R1\",\"rackDescription\":\"R1\",\"hostId\":\"3\",\"hostName\":\"Host3\",\"hostDescription\":\"Host 3\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"},{\"datacenterId\":\"1\",\"datacenterName\":\"D1\",\"datacenterDescription\":\"D1\",\"floorId\":\"1\",\"floorName\":\"F1\",\"floorDescription\":\"F1\",\"rackId\":\"2\",\"rackName\":\"R2\",\"rackDescription\":\"Rack 2\",\"hostId\":\"4\",\"hostName\":\"Host4\",\"hostDescription\":\"Host 4\",\"modelGroupId\":\"1\",\"modelGroupName\":\"PMG-Dell-1920\",\"hostType\":\"SERVER\",\"IPAddress\":\"127.0.0.1\",\"processorCount\":\"1\",\"VMCount\":\"0\"}]}";
 		String result = connection.getHosts();
 		JSONArray test2 = JSONParser.parseJson(result, "hostExtended");		
 		int number_of_hosts = test2.length();	
+		System.out.println(number_of_hosts);
 
 				
 		for (int x = 0; x < number_of_hosts; x++) {
@@ -224,6 +307,8 @@ public class FrontScreen {
 			tempFloorid = Integer.parseInt((String) json_object_holder.get("floorId"));
 			tempRackid = Integer.parseInt((String) json_object_holder.get("rackId"));
 			tempHostid = Integer.parseInt((String) json_object_holder.get("hostId"));
+			tempHostName = (String) json_object_holder.get("hostName");
+			tempRackName = (String) json_object_holder.get("rackName");
 			
 			addDataCenter();
 			addFloor();
@@ -258,5 +343,10 @@ public class FrontScreen {
 		
 		end = new DateParser(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0])).parse();
 
+	}
+	
+	public static void main(String[] args){
+		start();
+		System.out.println(rackToString());
 	}
 }

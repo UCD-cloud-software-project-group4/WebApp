@@ -65,7 +65,7 @@ public class ConnectionResults {
 	}
 	
 	public JSONArray getUsageHost(long start_time, long end_time) {
-		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id	+ "/floors/" + floor_id + "/racks/" + rack_id + "/power?starttime="+ start_time +"&endtime=" + end_time;
+		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id	+ "/floors/" + floor_id + "/racks/" + rack_id + "/hosts/" + host_id + "/power?starttime="+ start_time +"&endtime=" + end_time;
 		Connection connection = new Connection(URL);
 		String result = connection.makeRequest(connection);
 		JSONArray result1 = JSONParser.parseJson(result, "power");

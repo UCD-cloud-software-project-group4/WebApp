@@ -1,5 +1,7 @@
 package hardware;
 
+import java.text.DecimalFormat;
+
 import org.json.JSONArray;
 
 import connections.ConnectionResults;
@@ -11,6 +13,7 @@ public class Host implements Structures {
 	private int host_id;
 	private double average;
 	private double max;
+	private String name;
 
 	public Host() {
 		dc_id = 0;
@@ -19,15 +22,17 @@ public class Host implements Structures {
 		host_id = 0;
 		average = 0;
 		max = 0;
+		name = "";
 	}
 
-	public Host(int dc_id, int floor_id, int rack_id, int host_id, long start_date, long end_date) {
+	public Host(int dc_id, int floor_id, int rack_id, int host_id, String name, long start_date, long end_date) {
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
 		this.rack_id = rack_id;
 		this.host_id = host_id;
 		this.average = getAverage(start_date, end_date);
 		this.max = getMax(start_date, end_date);
+		this.name = name;
 	}
 		
 	public double getMax(long start_date, long end_date) {
@@ -78,17 +83,25 @@ public class Host implements Structures {
 		return to_string;
 	}
 	
-	public double getAverageFigure(){
-		return average;
+	public String getAverageFigure(){
+		DecimalFormat df = new DecimalFormat("#.00"); 
+		return df.format(average);
 	}
 	
-	public double getMaxFigure(){
-		return max;
+	public String getMaxFigure(){
+		DecimalFormat df = new DecimalFormat("#.00"); 
+		return df.format(max);
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
 
-	public static void main(String[] args){
-		Host host = new Host(1,1,1,1,1416400000,1416404989);
-		System.out.println(host.max);
-		System.out.println(host.average);	
-	}
+//	public static void main(String[] args){
+//		Host host = new Host(1,1,1,2,1416400000,1416410374);
+//		System.out.println(host.getID());
+//		System.out.println(host.getMaxFigure());
+//		System.out.println(host.getAverageFigure());	
+//	}
 }
