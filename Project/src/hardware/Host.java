@@ -77,6 +77,14 @@ public class Host implements Structures {
 		String to_string = "Host ID: " + host_id;
 		return to_string;
 	}
+	
+	public double getAverageFigure(){
+		return average;
+	}
+	
+	public double getMaxFigure(){
+		return max;
+	}
 
 	public static void main(String[] args){
 		Host host = new Host(1,1,1,1,1416400000,1416404989);
