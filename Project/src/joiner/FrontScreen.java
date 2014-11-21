@@ -142,6 +142,41 @@ public class FrontScreen {
 		//return hosts.substring(0,hosts.length()-1);
 	}
 	
+		public static String hostAverage(){
+		String hosts="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					for(Host host:rack.getHosts()){
+						hosts+="\""+host.getAverageFigure()+"\",";
+					}
+				}
+			}
+		}
+		reset();
+		return hosts;
+		//return hosts.substring(0,hosts.length()-1);
+	}
+	
+	public static String hostMax(){
+		String hosts="";
+		start();		
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					for(Host host:rack.getHosts()){
+						hosts+="\""+host.getMaxFigure()+"\",";
+					}
+				}
+			}
+		}
+		reset();
+		return hosts;
+		//return hosts.substring(0,hosts.length()-1);
+	}
 	public static String serverAndRackCreation(){
 		start();
 		String output="";
