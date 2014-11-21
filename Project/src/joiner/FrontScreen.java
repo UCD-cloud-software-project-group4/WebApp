@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import connections.ConnectionResults;
 import parser.DateParser;
 import parser.JSONParser;
 
@@ -25,8 +26,13 @@ public class FrontScreen {
 	static int tempFloorid;
 	static int tempDCid;
 	static int tempHostid;
+<<<<<<< HEAD
 	static long start=22222222;
 	static long end=222222;
+=======
+	static long start = 1416400000;
+	static long end = 1416410374;
+>>>>>>> aa6baff2c8991b3fa9d97c74824a90416c4675a0
 	
 	public FrontScreen(){
 		
@@ -121,7 +127,11 @@ public class FrontScreen {
 	
 	public static String hostToString(){
 		String hosts="";
+<<<<<<< HEAD
 		start();
+=======
+		start();		
+>>>>>>> aa6baff2c8991b3fa9d97c74824a90416c4675a0
 				
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
@@ -132,7 +142,7 @@ public class FrontScreen {
 				}
 			}
 		}
-		
+		reset();
 		return hosts;
 		//return hosts.substring(0,hosts.length()-1);
 	}
@@ -140,6 +150,7 @@ public class FrontScreen {
 	public static String serverAndRackCreation(){
 		start();
 		String output="";
+		start();
 		for(Floor floor:datacenters.get(0).getFloors()){
 			for(Rack rack: floor.getRacks()){
 				output+=("\t<div class=\"rack\">\n");
@@ -166,6 +177,7 @@ public class FrontScreen {
 		
 	}
 	
+<<<<<<< HEAD
 	
 	public static void start(){
 		
@@ -179,6 +191,14 @@ public class FrontScreen {
 		
 		int number_of_hosts = test2.length();
 		
+=======
+	//public static void main(String[] args){
+	public static void start(){			
+		ConnectionResults connection = new ConnectionResults(1,1); //We know its DC 1 and floor 1
+		String result = connection.getHosts();
+		JSONArray test2 = JSONParser.parseJson(result, "hostExtended");		
+		int number_of_hosts = test2.length();	
+>>>>>>> aa6baff2c8991b3fa9d97c74824a90416c4675a0
 				
 		for (int x = 0; x < number_of_hosts; x++) {
 			json_object_holder = test2.getJSONObject(x);
@@ -192,14 +212,7 @@ public class FrontScreen {
 			addRack();
 			addHost();
 		}
-		/*
-		System.out.println("Datacenter: "+ datacenters.get(0).dc_id);
-		System.out.println("Floor: " + datacenters.get(0).dc_floors.get(0).floor_id);
-		System.out.println("Rack: "+ datacenters.get(0).dc_floors.get(0).floor_racks.get(1).getID());
-		System.out.println("Host: " + datacenters.get(0).dc_floors.get(0).floor_racks.get(0).rack_hosts.get(0).getID());
-		
-		System.out.println(hostToString());
-		*/
+
 	}
 	
 		
