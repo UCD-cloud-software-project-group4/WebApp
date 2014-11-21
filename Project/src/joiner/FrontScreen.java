@@ -121,7 +121,7 @@ public class FrontScreen {
 	
 	public static String hostToString(){
 		String hosts="";
-		
+		start();
 				
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
@@ -138,6 +138,7 @@ public class FrontScreen {
 	}
 	
 	public static String serverAndRackCreation(){
+		start();
 		String output="";
 		for(Floor floor:datacenters.get(0).getFloors()){
 			for(Rack rack: floor.getRacks()){
@@ -166,7 +167,7 @@ public class FrontScreen {
 	}
 	
 	
-	public static void start(long start, long end){
+	public static void start(){
 		
 	
 			

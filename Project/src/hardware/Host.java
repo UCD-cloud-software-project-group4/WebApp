@@ -33,6 +33,7 @@ public class Host implements Structures {
 	public double getMax(long start_date, long end_date) {
 		double max = 0;
 		ConnectionResults results = new ConnectionResults(dc_id, floor_id, rack_id, host_id);
+		
 		JSONArray hold_power_stats = results.getUsageHost(start_date, end_date);
 		
 		for(int x=0; x< hold_power_stats.length(); x++){
