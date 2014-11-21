@@ -8,7 +8,92 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test for the front end</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+html,body{
+	margin: 0px;
+	padding: 0px;
+}
+.outerRack{
+	float: left;
+	height: 400px;
+	width: 250px;
+	background-color: gray;
+	margin: 25px;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+.innerRack{
+	margin-left: 20px;
+	margin-top: 20px;
+	padding: 12px;
+	float: left;
+	height: 188px;
+	width: 188px;
+	background-color: white;
+	border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	border: 0px solid #000000;
+}
+.innerRack img{
+	padding-bottom: 12px;
+}
+.addServer{
+	float: left;
+	width: 212px;
+	height: 50px;
+	background-color: #999;
+	margin-left: 20px; 
+}
+.rackInfo{
+	float: left;
+	width: 212px;
+	height: 100px;
+	background-color: blue;
+	margin-left: 20px;
+	border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	border: 0px solid #000000;
+}
+
+
+#serverInfo{
+	float: left;
+	height: 400px;
+	width: 250px;
+	background-color: white;
+	margin-left: 25px;
+	margin-top: 25px;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+#information{
+	margin-left: 0px;
+	margin-top: 0px;
+	padding: 12px;
+	float: left;
+	height: 188px;
+	width: 228px;
+	background-color: #528B8B;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+p{
+	margin: 5px;
+	padding-left: 10px;
+	color: white;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+</style>
+
 <script>
     
     <%//Initiates all the datacenters, floors, racks and hosts
@@ -72,14 +157,28 @@
     </script>
 </head>
 <body>
+<div id='serverInfo'>
+	<div id='information'>
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+	</div>
+</div>
 
-	<div id="test">Racks and Servers</div>
+	
 
 
 	<%= FrontScreen.serverAndRackCreation() %>
+
+
+
 
 	<div id="sysinfo"></div>
 
 	<div id="info"></div>
 </body>
+
+
+
 </html>

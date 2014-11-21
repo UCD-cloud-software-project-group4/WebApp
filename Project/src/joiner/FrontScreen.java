@@ -123,22 +123,19 @@ public class FrontScreen {
 	}
 
 	
-	
 	public static String serverAndRackCreation(){
-		start();
-		String output="<div id='serverInfo'><div id='information'><p>1</p><p>2</p><p>3</p><p>4</p></div></div>";
+		
+		String output ="";
 		start();
 		for(Floor floor:datacenters.get(0).getFloors()){
 			for(Rack rack: floor.getRacks()){
-				output+=("\t<div class=\"rack\">\n");
-				output+=("\t\t<div class=\"rackinner"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
+				output+=("\t<div class=\"outerRack\">\n");
+				output+=("\t\t<div class=\"innerRack"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
 				for(Host host:rack.getHosts()){
 					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.png\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
 				}
-				
-				
 				output+=("\t\t</div>\n");
-				output+=("<div class='addServer'><img src='addserver.png'></div><div class='rackInfo'><p>1</p><p>2</p><p>3</p><p>4</p></div>");
+				output+=("<div class='addServer'>\n\t\t<img src='addserver.png'></div><div class='rackInfo'><p>1</p><p>2</p><p>3</p><p>4</p></div>");
 				output+=("\t</div>\n");
 				
 				
