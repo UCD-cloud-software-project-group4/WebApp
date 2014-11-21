@@ -16,8 +16,8 @@
     
 	//These arrays hold the power information for each server
     var serverID = [<% out.print(FrontScreen.hostToString()); %>];
-    var max = [];
-    var average = [];
+    var max = [<% out.print(FrontScreen.hostMax()); %>];
+    var average = [<% out.print(FrontScreen.hostAverage()); %>];
 
     var images = 8;
     
