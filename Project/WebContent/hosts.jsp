@@ -37,6 +37,7 @@ html,body{
 	-moz-border-radius: 10px 10px 0px 0px;
 	-webkit-border-radius: 10px 10px 0px 0px;
 	border: 0px solid #000000;
+	
 }
 .innerRack img{
 	padding-bottom: 12px;
@@ -102,20 +103,31 @@ p{
     
 	//These arrays hold the power information for each server
     var hostID = [<% out.print(FrontScreen.hostToString()); %>];
-    var hostMax = [<% out.print(FrontScreen.hostMax()); %>];
+    var hostRackID = [<% out.print(FrontScreen.hostRackToString());%>];
+	var hostMax = [<% out.print(FrontScreen.hostMax()); %>];
     var hostAverage = [<% out.print(FrontScreen.hostAverage()); %>];
-    var hostName = [<% out.print(FrontScreen.hostName()); %>]
+    var hostName = [<% out.print(FrontScreen.hostName()); %>];
 
     var rackID = [<% out.print(FrontScreen.rackToString()); %>];
     var rackMax = [<% out.print(FrontScreen.rackMax()); %>];
     var rackAverage = [<% out.print(FrontScreen.rackAverage()); %>];
-    var rackName = [<% out.print(FrontScreen.rackName()); %>]
+    var rackName = [<% out.print(FrontScreen.rackName()); %>];
+    var test=0;
+    var current_host = 0;
+    var current_rack =0;
+    
+    
+    function updateRackMax(){
+    	
+    	
+    }
+    
       
     //This displays the server info
     function displayServerInfo(element, number){
-    document.getElementById("sysinfo").innerHTML="<p>Server Number: "+parseInt(hostID[number])+"</p><p>Max Power: "+hostMax[number]+"</p><p>Average: "+hostAverage[number]+"</p>";
+    document.getElementById("information").innerHTML="<p>Server Number: "+parseInt(hostID[number])+"</p><p>Max Power: "+hostMax[number]+"</p><p>Average: "+hostAverage[number]+"</p>";
     
-    var elements = document.getElementsByName("server");
+    var elements = document.getElementsByName("server".concat(current_host+1));
     
     for(var i=0; i<elements.length; i++) {
 		elements.item(i).style.opacity="1.0";
@@ -128,17 +140,24 @@ p{
    
     }
     
-    function drag(ev) {
+    
+    
+    function drag(ev, passed_id) {
+    	var id_length = passed_id.length; 	
+    	current_host=passed_id.slice(1,id_length);
         ev.dataTransfer.setData("text/html", ev.target.id);
     }
 
-    function drop(ev) {
-        ev.preventDefault();
-        
+    function drop(ev, passed_id) {		
+        current_rack=passed_id;
+    	alert(current_host);
+        updateArrays();
+       	
+        ev.preventDefault();       
         var data = ev.dataTransfer.getData("text/html");
         ev.target.appendChild(document.getElementById(data));
-
-        images--;
+		
+        
   
     }
   
@@ -146,23 +165,26 @@ p{
         ev.preventDefault();
     }
 
-    function change() {
-      var stuff = "";
-      for (var i = 0; i < images; i++) {
-          stuff += "<img src='server.jpg' id='drag' draggable='true' ondragstart='drag(event)' />";
-      };
-      //alert("innerHTML" + stuff);
-      document.getElementById("rackinner1").innerHTML = stuff;
-    }
+  	function updateArrays(){
+  		var currentHostMax=hostMax[current_host];
+  		rackMax[hostRackID[current_host]-1]-=currentHostMax;
+  		
+  		hostRackID[current_host]=current_rack;
+  		
+  		currentHostMax=hostMax[current_host];
+   		rackMax[hostRackID[current_host]-1]= rackMax[hostRackID[current_host]-1] + currentHostMax;
+   		//Average count the new amount of hosts on a rack, add the 
+   		//currrent host's average to the current racks average, divide by new number of hosts in rack
+   		
+  		document.getElementById("rm"+current_rack).innerHTML="Estimated Max: "+rackMax[hostRackID[current_host]-1];
+  	}
+    
     </script>
 </head>
 <body>
 <div id='serverInfo'>
 	<div id='information'>
-		<p>1</p>
-		<p>2</p>
-		<p>3</p>
-		<p>4</p>
+		
 	</div>
 </div>
 

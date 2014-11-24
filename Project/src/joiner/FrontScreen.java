@@ -28,15 +28,12 @@ public class FrontScreen {
 	static int tempHostid;
 	static String tempHostName;
 	static String tempRackName;
+	static int test=0;
 
 	static long start = 1416400000;
 	static long end = 1416410374;
 
 	
-	public FrontScreen(){
-		
-		
-	}
 	
 	
 	/**Adds the datacenter*/
@@ -129,35 +126,57 @@ public class FrontScreen {
 		start();
 		for(Floor floor:datacenters.get(0).getFloors()){
 			for(Rack rack: floor.getRacks()){
-				output+=("\t<div class=\"outerRack\">\n");
-				output+=("\t\t<div class=\"innerRack"+ rack.getID()+"\"  ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n");
+				output+=("\t<div class=\"outerRack\" draggable=\"false\">\n");
+				output+=("\t\t<div class=\"innerRack\" draggable=\"false\" id=\""+rack.getID()+"\"  ondrop=\"drop(event, this.id)\" ondragover=\"allowDrop(event)\">\n");
 				for(Host host:rack.getHosts()){
-					output+=("\t\t\t<img name=\"server\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.png\" id=\"drag"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event)\" />\n");
+					output+=("\t\t\t<img name=\"server"+host.getID()+"\" onClick=\"displayServerInfo(this, "+(host.getID()-1) +")\" src=\"server.png\" id=\"h"+(host.getID()-1)+"\" draggable=\"true\" ondragstart=\"drag(event, this.id)\" />\n");
 				}
 				output+=("\t\t</div>\n");
-				output+=("<div class='addServer'>\n\t\t<img src='addserver.png'></div><div class='rackInfo'><p>1</p><p>2</p><p>3</p><p>4</p></div>");
-				output+=("\t</div>\n");
-				
-				
-			}
-			
-			
+				output+=("<div class='addServer'>\n\t\t<img src='addserver.png'></div><div class='rackInfo' id='rack"+rack.getID()+"'><p id=\"rn"+rack.getID()+"\">Rack Name:"+rack.getName()+"</p><p id=\"ra"+rack.getID()+"\">Average:"+rack.getAverageFigure()+"</p><p id =\"rm"+rack.getID()+"\">Maximum:"+rack.getMaxFigure()+"</p></div>");
+				output+=("\t</div>\n");			
+			}			
 		}
 		reset();
 		return output;
 	}
 	
-	public static String hostToString(){
-		String hosts="";
-
+	public static void addVariable(){
+		test++;
+	}
+	
+	public static String hostRackToString(){
+		String hostrackID="";
+		
 		start();
+		
 
 				
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
 					for(Host host:rack.getHosts()){
-						hosts+="\""+host.getID()+"\",";
+						hostrackID+=""+host.getHostRackID()+",";
+					}
+				}
+			}
+		}
+		reset();
+		return hostrackID.substring(0,hostrackID.length()-1);
+		
+	}
+	
+	public static String hostToString(){
+		String hosts="";
+
+		start();
+		
+
+				
+		for(DataCenter dc: datacenters){
+			for(Floor floor:dc.getFloors()){
+				for(Rack rack:floor.getRacks()){
+					for(Host host:rack.getHosts()){
+						hosts+=""+host.getID()+",";
 					}
 				}
 			}
@@ -166,7 +185,7 @@ public class FrontScreen {
 		return hosts.substring(0,hosts.length()-1);
 	}
 	
-		public static String hostAverage(){
+	public static String hostAverage(){
 		String hosts="";
 		start();		
 				
@@ -174,7 +193,7 @@ public class FrontScreen {
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
 					for(Host host:rack.getHosts()){
-						hosts+="\""+host.getAverageFigure()+"\",";
+						hosts+=""+host.getAverageFigure()+",";
 					}
 				}
 			}
@@ -191,7 +210,7 @@ public class FrontScreen {
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
 					for(Host host:rack.getHosts()){
-						hosts+="\""+host.getMaxFigure()+"\",";
+						hosts+=""+host.getMaxFigure()+",";
 					}
 				}
 			}
@@ -227,7 +246,7 @@ public class FrontScreen {
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
 					
-						racks +="\""+rack.getID()+"\",";
+						racks +=""+rack.getID()+",";
 				}
 			}
 		}
@@ -235,14 +254,14 @@ public class FrontScreen {
 		return racks.substring(0,racks.length()-1);
 	}
 	
-		public static String rackAverage(){
+	public static String rackAverage(){
 		String racks="";
 		start();		
 				
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
-						racks+="\""+rack.getAverageFigure()+"\",";
+						racks+=""+rack.getAverageFigure()+",";
 				}
 			}
 		}
@@ -257,7 +276,7 @@ public class FrontScreen {
 		for(DataCenter dc: datacenters){
 			for(Floor floor:dc.getFloors()){
 				for(Rack rack:floor.getRacks()){
-						racks+="\""+rack.getMaxFigure()+"\",";
+						racks+=""+rack.getMaxFigure()+",";
 				}
 			}
 		}
@@ -285,7 +304,7 @@ public class FrontScreen {
 		
 	}
 	
-
+	
 	
 	//public static void main(String[] args){
 	public static void start(){			
