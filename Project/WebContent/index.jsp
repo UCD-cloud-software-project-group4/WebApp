@@ -5,18 +5,27 @@
 
 #header {
     height: 240px;
-    background-image:url("logo.png");
-    border-radius: 10px;
-    border: 1px solid #eb521f;
     margin: 5px;
+    padding: 0px;
+}
+
+#header img{
+	max-height: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	border-radius: 10px;
+    margin: 0px;
+    
 }
 
 #content {
     background: #504540;
     border-radius: 10px;
-    border: 1px solid #ebebeb;
     margin: 5px;
-    color: #EEEEEE;    
+    color: #EEEEEE;
+    padding-top: 10px;
+    padding-bottom: 10px;   
 }
 
 form {
@@ -29,7 +38,7 @@ form {
 </head>
 <body>
 <div id="header">
-
+	<img src="logo.png" alt="Papillon Image" />
 </div>
 <div id="content">
 
@@ -45,10 +54,8 @@ form {
 			</select> &nbsp;Select Floor
 		</p>
 		<p>
-			<select>
-				<option>R1</option>
-				<option>R2</option>
-			</select> &nbsp;Select Rack
+			<input type="text" name="max_rack_power" />
+			Enter Max Capacity Per Rack	
 		</p>
 		<p>
 			<input type="radio" name="timescale_options" value="get_by_current"

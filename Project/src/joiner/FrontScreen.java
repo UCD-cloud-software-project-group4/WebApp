@@ -111,7 +111,7 @@ public class FrontScreen {
 				output += ("\t\t<div class=\"innerRack\" draggable=\"false\" id=\""
 						+ rack.getID() + "\" ondrop=\"drop(event, this.id)\" ondragover=\"allowDrop(event)\">\n");
 				for (Host host : rack.getHosts()) {
-					output += ("\t\t\t<img name=\"server" + host.getID()
+					output += ("\t\t\t<img name=\"server" 
 							+ "\" onClick=\"displayServerInfo(this, "
 							+ (host.getID() - 1)
 							+ ")\" src=\"server.png\" id=\"h"
