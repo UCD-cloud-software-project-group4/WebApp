@@ -16,6 +16,19 @@ html,body {
 	color:#333;
 }
 
+#graph{
+	position:relative;
+	width:100%;
+	height:100%;
+	top:30px;
+	background-color: #528B8B;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	
+}
+
 #main{
 	float:left;
 	width: 100%;
@@ -141,7 +154,7 @@ html,body {
 	border: 0px solid #000000;
 }
 
-#information {
+#information {<img src="graph.png" width="100%">
 	margin-left: 0px;
 	margin-top: 0px;
 	padding: 12px;
@@ -219,9 +232,8 @@ var max_power = <%out.print(max);%>;
 	//This displays the server info
 	function displayServerInfo(element, number) {
 		document.getElementById("information").innerHTML = "<p>Server Number: "
-				+ parseInt(hostID[number]) + "</p><p>Average: " + hostAverage[number] + "<p>Max Power: " + hostMax[number];
-				+ "</p>";
-		var elements = document.getElementsByName("server");
+				+ parseInt(hostID[number]) + "</p><p>Average: " + hostAverage[number] + "kWhr </p><p>Max Power: " + hostMax[number] +"kWhr</p>";
+				var elements = document.getElementsByName("server");
 				
 		for (var i = 0; i < elements.length; i++) {
 			elements.item(i).style.opacity = "1.0";
@@ -345,7 +357,9 @@ var max_power = <%out.print(max);%>;
 <div id="belowHeader"><h2>Below show's all Racks, inside each rack show's their server. The box on the left will display any server data once clicked.</h2></div>
 	<div id="main">
 		<div id='serverInfo'>
-			<div id='information'></div>
+			<div id='information'>
+			</div>
+			<a href="Graph.png">	<img  id="graph" src="Graph.png" width="100%"></a>
 		</div>
 		<%=FrontScreen.serverAndRackCreation(start_epoch, end_epoch)%>
 		<div id="sysinfo"></div>

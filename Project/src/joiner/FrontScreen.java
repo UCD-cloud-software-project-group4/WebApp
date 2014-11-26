@@ -128,8 +128,8 @@ public class FrontScreen {
 						+ rack.getID()
 						+ "\">Average:"
 						+ rack.getAverageFigure()
-						+ "</p><p id =\"rm"
-						+ rack.getID() + "\">Maximum:" + rack.getMaxFigure() + "</p></div>");
+						+ "kWhr</p><p id =\"rm"
+						+ rack.getID() + "\">Maximum:" + rack.getMaxFigure() + "kWhr</p></div>");
 				output += ("\t</div>\n");
 			}
 		}
