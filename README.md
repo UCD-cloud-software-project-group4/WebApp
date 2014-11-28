@@ -29,22 +29,3 @@ objects (i.e. Server, racks, floors, etc...) from the hardware package.  These o
 necessary data (i.e. Power usage, etc...) obtained from the Papillon System through classes and methods in the 
 Connection package. These classes connect with the Papillon system in a RESTful manner and retrieve JSON data which 
 is then parsed (using methods in the parser class) .
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The software behind this application was built in java. The functionality of the application is incorporated into a web based GUI with JSP and some Javascript as well for handling forms provided by users and dynamically changing representations of data. 
-When a user views racks and servers via the GUI, this is a result of JSP calling on Java methods and generating HTML in the FrontScreen.java class in order to create GUI placeholders populated by datacenter objects (i.e. Server, racks, floors, etc...) from the hardware package.  These objects are  populated with the necessary data (i.e. Power usage, etc...) obtained from the Papillon System through classes and methods in the Connection package. These classes connect with the Papillon system in a RESTful manner and retrieve JSON data which is then parsed (using methods in the parser class).
