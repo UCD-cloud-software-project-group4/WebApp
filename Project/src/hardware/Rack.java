@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import connections.ConnectionResults;
+import connection.ConnectionResults;
 
 public class Rack implements Structures{
 	private List<Host> rack_hosts = new ArrayList<Host>();

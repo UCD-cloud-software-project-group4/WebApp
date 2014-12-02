@@ -1,6 +1,6 @@
 /*This class contains utility methods which can be used to manipulate data by sending it to
  *  certain locations in various different ways */
-package connections;
+package connection;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

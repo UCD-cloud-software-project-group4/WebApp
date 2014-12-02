@@ -42,7 +42,7 @@ form {
 </div>
 <div id="content">
 
-	<form method="GET" action="hosts.jsp">
+	<form method="GET" action="result.jsp">
 		<p>
 			<select>
 				<option>DC1</option>

@@ -1,4 +1,4 @@
-package connections;
+package connection;
 
 import org.json.JSONArray;
 

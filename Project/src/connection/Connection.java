@@ -1,6 +1,6 @@
 /* This class enables the creation of a Connection object which is the basis for making a HTTP request to the Papillon system. Also,
  * you can request to retrieve the data obtained from such a connection and send data via the connection.   */
-package connections;
+package connection;
 
 
 import java.io.IOException;

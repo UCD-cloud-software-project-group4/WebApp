@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 import org.json.JSONArray;
 
-import connections.ConnectionResults;
+import connection.ConnectionResults;
 
 public class Host implements Structures {
 	private int dc_id;

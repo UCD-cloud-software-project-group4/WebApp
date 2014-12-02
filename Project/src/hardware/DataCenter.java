@@ -3,6 +3,8 @@ package hardware;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**This class represents the*/
 public class DataCenter {
 	private List<Floor> dc_floors = new ArrayList<Floor>();
 	private int dc_id;
@@ -14,7 +16,7 @@ public class DataCenter {
 	
 	public DataCenter(int dc_id) {
 		this.dc_id = dc_id;		
-		this.dc_floors = dc_floors;
+		
 	}
 	
 	public void addFloor(Floor r){

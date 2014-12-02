@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 import parser.DateParser;
 import parser.JSONParser;
-import connections.ConnectionResults;
+import connection.ConnectionResults;
 
 public class FrontScreen {
 	static List<DataCenter> datacenters = new ArrayList<DataCenter>();
@@ -29,8 +29,7 @@ public class FrontScreen {
 	static String tempHostName;
 	static String tempRackName;
 	static int test = 0;
-	//static long start = 1416400000;
-	//static long end = 1416410374;
+	
 
 	/** Adds the datacenter */
 	private static void addDataCenter() {
@@ -137,9 +136,7 @@ public class FrontScreen {
 		return output;
 	}
 
-	public static void addVariable() {
-		test++;
-	}
+	
 
 	public static String hostRackToString(long start, long end) {
 		String hostrackID = "";
@@ -313,25 +310,7 @@ public class FrontScreen {
 		}
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		PrintWriter out = response.getWriter();
-		out.println("<HTML>");
-		out.println("<head>");
-		out.println("<meta charset=\"utf-8\">");
-		out.println("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
-		out.println("</head>");
-		// Retrieve the dates needed to add to the hosts
-		//String startDateString = request.getParameter("start");
-		//String endDateString = request.getParameter("end");
-		//String[] date = startDateString.split("-");
-		// This converts the form date to an epoch time
-		//start = new DateParser(Integer.parseInt(date[2]),
-		//		Integer.parseInt(date[1]), Integer.parseInt(date[0])).parse();
-		//date = endDateString.split("-");
-		//end = new DateParser(Integer.parseInt(date[2]),
-		//		Integer.parseInt(date[1]), Integer.parseInt(date[0])).parse();
-	}
+
 
 	public static void main(String[] args) {
 		//start(start, end);
