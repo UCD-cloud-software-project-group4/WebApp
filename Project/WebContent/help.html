@@ -1,0 +1,310 @@
+<html>
+<head>
+	<title>help</title>
+	<style>
+	html,body{
+		margin: 0px;
+		margin-bottom: 50px;
+		padding: 0px;
+	}
+	#wrapper{
+		margin-left: auto;
+		margin-right: auto;
+		width: 700px;
+		height: auto;
+		line-height: 150%;
+	}
+	h1{
+		float: left;
+		width: 700px;
+		height: auto;
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 20px;
+		text-shadow: 2px 2px 2px rgba(200, 200, 200, 1);
+	}
+	h2{
+		float: left;
+		width: 600px;
+		padding: 15px;
+		height: auto;
+		text-align: center;
+		background-color: #e20;
+		margin-bottom: 50px;
+		border-radius: 15px 0px 0px 0px;
+		-moz-border-radius: 15px 0px 0px 0px;
+		-webkit-border-radius: 15px 0px 0px 0px;
+		border: 0px solid #000000;
+		color: #eee;
+		text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.75);
+	}
+	#readme{
+		float: left;
+		width: 700px;
+		height: auto;
+	}
+	article{
+		float: left;
+		width: auto;
+		height: auto;
+	}
+	section{
+		float: left;
+		width: 630px;
+		padding: 35px;
+		height: auto;
+		background-color: #222;
+		color: #eee;
+		font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman', serif;
+		margin-top: 25px;
+		margin-bottom: 25px;
+		text-align: justify;
+    	text-justify: inter-word;
+    	border-radius: 25px 0px 25px 0px;
+		-moz-border-radius: 25px 0px 25px 0px;
+		-webkit-border-radius: 25px 0px 25px 0px;
+		border: 0px solid #000000;
+		-webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+		-moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+		box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+	}
+	#contents{
+		float: left;
+		width: 600px;
+		padding: 15px;
+		height: auto;
+		text-align: center;
+		background-color: #e20;
+		margin-bottom: 0px;
+		border-radius: 15px 0px 15px 0px;
+		-moz-border-radius: 15px 0px 15px 0px;
+		-webkit-border-radius: 15px 0px 15px 0px;
+		border: 0px solid #000000;
+		color: #eee15
+	}
+	#contents li {
+		font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman', serif;
+		font-size: 20px;
+		list-style:none;
+		background-image:none;
+		background-repeat:none;
+		background-position:0;
+		text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.75);
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-right: 25px;
+	}
+	#contents li a:link {
+
+		color: #eee; 
+		background-color: transparent; 
+		text-decoration: none;
+	}
+	#contents li a:visited {
+		color: #eee; 
+		background-color: transparent; 
+		text-decoration: none;
+	}
+	#contents li a:hover {
+		color: #222;
+		background-color: transparent;
+		text-decoration: none;
+		text-shadow: 2px 2px 2px rgba(200, 200, 200, 1);
+	}
+	#contents li a:active {
+		color: #222;
+		background-color: transparent;
+		text-decoration: none;
+		text-shadow: 2px 2px 2px rgba(200, 200, 200, 1);
+	}
+	#top{
+		float: left;
+		width: 600px;
+		padding: 15px;
+		height: auto;
+		text-align: center;
+		background-color: #e20;
+		margin-top: 25px;
+		margin-bottom: 25px;
+		border-radius: 0px 0px 15px 0px;
+		-moz-border-radius: 0px 0px 15px 0px;
+		-webkit-border-radius: 0px 0px 15px 0px;
+		border: 0px solid #000000;
+		color: #eee;
+		font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman', serif;
+		font-size: 20px;
+		text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.75);
+	}
+	#top a:link {
+
+		color: #eee; 
+		background-color: transparent; 
+		text-decoration: none;
+	}
+	#top a:visited {
+		color: #eee; 
+		background-color: transparent; 
+		text-decoration: none;
+	}
+	#top a:hover {
+		color: #222;
+		background-color: transparent;
+		text-decoration: none;
+	}
+	#top a:active {
+		color: #222;
+		background-color: transparent;
+		text-decoration: none;
+	}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
+		$(function() { $('a[href*=#]:not([href=#])').click(function() {
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop: target.offset().top
+						}, 1000);
+						return false;
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id='wrapper'>
+		<h1>Rack Configuration Help</h1>
+		<article id='readme'>
+			<section id='table'>
+				<div id='contents'>
+					<ol>
+						<li><a href='#overview'>Overview of the Project</a></li>
+						<li><a href='#architecture'>System Architecture</a></li>
+						<li><a href='#hardware'>Hardware Package</a></li>
+						<li><a href='#connection'>Connection Package</a></li>
+						<li><a href='#parser'>Parser Package</a></li>
+						<li><a href='#joiner'>Joiner Package</a></li>
+						<li><a href='#index'>Landing Page</a></li>
+						<li><a href='#result'>Results Page</a></li>
+					</ol>
+				</div>
+			</section>
+			<section id='overview'>
+				<h2>Overview of Application</h2>
+
+				<p>This is a web-based application which monitors racks and servers in a data center using the Papillon API. This application monitors and identifies racks that are being used ineffectively or are close to their operational limit (i.e. they have a small number of active servers or a small power consumption, or the collective power consumption of the servers is close to the maximum power limits of the rack's Power Units). Furthermore, users of this tool are able to set thresholds for defining these levels. Once candidate racks for decommissioning are identified, a user can, through the use of a dashboard GUI, view the racks in the data centre, click on a server in a rack and drag and drop it into a rack that has spare capacity. The tool then uses the information on the server's power consumption (provided by interaction with the Papillon system) to determine if the new rack can accommodate the new server. The impact on the rack of the new server is then highlighted, together with the impact on the rack from where it was taken. Any violations of the centre's or Power Distribution Units (PDU's) operating conditions triggers an automatic warning to the user. The overall effect is to allow the user to manually consolidate racks subject to the constraints and regulations of the operational conditions of the data centre.</p>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='architecture'>
+				<h2>System Architecture</h2>
+
+				<p>The software behind this application was built in java. The functionality of the application is incorporated into a web based GUI with JSP and some Javascript as well for handling forms provided by users and dynamically changing representations of data. When a user views racks and servers via the GUI, this is a result of JSP calling on Java methods and generating HTML in the FrontScreen.java class in order to create GUI placeholders populated by datacenter objects (i.e. Server, racks, floors, etc...) from the hardware package. These objects are populated with the necessary data (i.e. Power usage, etc...) obtained from the Papillon System through classes and methods in the Connection package. These classes connect with the Papillon system in a RESTful manner and retrieve JSON data which is then parsed (using methods in the parser class).</p>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+		</article>
+		<article>
+			<section id='hardware'>
+				<h2>Hardware Package</h2>
+				<p>
+					Hardware - Contains the classes that represent the datacenter. This includes hosts, racks, floors and datacenters themselves.</p>
+				<ul>
+					<li>Host and rack classes have:
+						<ul>
+							<li>get max</li>
+							<li>get average</li>
+							<li>get id</li>
+							<li>get rack id</li>
+							<li>get floor id</li>
+							<li>get datacenter id</li>
+							<li>get name</li>
+						</ul>
+					</li>
+					<li>Within a datacenter is a list of floors.</li>
+					<li>Within a floor is a list of racks.</li>
+					<li>Within a rack is a list of hosts.</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='connection'>
+				<h2>Connection Package</h2>
+				<p>
+					Connection - Contains different connection classes that interact with the Papillon API.</p>
+				<ul>
+					<li>Connection.java - Creates the HTTP request for the Papillon system.</li>
+					<li>ConnectionResults.java - Contains human readable versions of the get-request results and returns a JSON file.</li>
+					<li>DataRedirection.java - Outputs the JSON file to a txt file. This was used for testing purposes.</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='parser'>
+				<h2>Parser Package</h2>
+				<p>
+					Parser - Holds the parsing classes used to parse information from Papillon.</p>
+				<ul>
+					<li>JSONParser.java - Used to extract information from JSON objects and arrays.</li>
+					<li>DateParser.java - Used to convert between epoch time and normal time.</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='joiner'>
+				<h2>Joiner Package</h2>
+				<p>
+					Joiner - Takes information from the backend and prints it to a JSP file. Also used to populate arrays in JavaScript.</p>
+				<ul>
+					<p>Joiner methods include:</p>
+					<li>Start - connects to Papillon and returns all the hosts. From that the racks, floors and datacenters are created.</li>
+					<li>ServerAndRackCreation - gets the hardware info</li>
+					<li>Methods that populate JavaScript arrays</li>
+					<li>A method that dynamically creates a visual representation of the racks and hosts onto the JSP page.</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='index'>
+				<h2>Landing Page</h2>
+				<p>Index.jsp - This page is a web form that allows users to select options for their Papillon search.</p>
+				<ul>
+					<p>Options include:</p>
+					<li>Datacenter - Selects the datacenter.</li>
+					<li>Floor - Selects the floor.</li>
+					<li>Max capacity of the rack.</li>
+					<li>Get current data - option to get the current configuration of the datacenter.</li>
+					<li>Get info by time - option to get a historical configuration of the datacenter.</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+			<section id='result'>
+				<h2>Results Page</h2>
+				<p>Result.jsp - This page displays the Papillon information for the configuration set by the user at the index form.</p>
+				<ul>
+					<p>Items include:</p>
+					<li>Server information is held in the a box on the top left corner of the screen. This information includes information from the joiner package that populates a JavaScript array. Information displayed includes:
+						<ul>
+							<li>server id</li>
+							<li>server max</li>
+							<li>server weighted average</li>
+						</ul>
+					</li>
+					<li>The graph box below the server information is part of the future work for the module. This graph will indicates the average power usage over time.</li>
+					<li>Rack boxes populate the rest of the central div. Each rack represents a rack returned by the joiner. The rack information is given at the bottom of each rack box. The hosts within these racks represent the current rack configuration. These hosts can be moved using a drag and drop facility. Features here include:
+						<ul>
+							<li>When a host is selected, host information is displayed in the server box</li>
+							<li>When a host is clicked and held, the user can move that host to a new rack</li>
+							<li>When a host is moved to a new rack, the rack information updates on each rack to assess the new system configuration. Three colours indicate the efficiency of the configuration. These colours represent:
+								<ul>
+									<li>Green - Working at 85-100% efficiency of the rack max</li>
+									<li>Orange - Working at less than 85% efficiency of the rack max</li>
+									<li>Red - Working at more than 100% efficiency of the rack max</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div id='top'><a href='#table'>Back to top</a></div>
+			</section>
+		</article>
+	</div>
+</body>
+</html>
