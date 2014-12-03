@@ -15,27 +15,32 @@ public class Floor {
 	}
 	
 	public Floor(int dc_id, int floor_id){
-		this.floor_racks = floor_racks;
+		floor_racks = null;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
 	}
 	
+	/** Method to add Racks onto Floors **/
 	public void addRack(Rack r){
 		floor_racks.add(r);
 	}
 	
+	/** Method to remove Racks from Floors **/
 	public void removeRack(Rack r){
 		floor_racks.remove(r);
 	}
 	
+	/** Return the List of racks associated with the Floor**/
 	public List<Rack> getRacks(){
 		return floor_racks;
 	}
-
+	
+	/** return the floor ID **/
 	public int getID() {
 		return floor_id;
 	}
 	
+	/** return the datacenter ID the floor is assoicated with **/
 	public int getDCID(){
 		return dc_id;
 	}

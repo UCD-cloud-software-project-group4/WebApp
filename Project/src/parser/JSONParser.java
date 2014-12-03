@@ -2,13 +2,15 @@ package parser;
 import org.json.*;
 
 public class JSONParser {
+	
+	/** This method is used to read in a full JSON file and key and returns a JSON array for easier manipulation*/
 	public static JSONArray parseJson(String wholeJSONList, String key){
 		JSONObject obj = new JSONObject(wholeJSONList);
 		JSONArray array = obj.getJSONArray(key);
 		return array;		
 	}
 	
-	//Not being used yet
+	/** This method is used to read in a full JSON file and key and returns a JSON objects for easier manipulation*/
 	public static JSONObject parseJsonObject(String wholeJSONList, String key){
 		JSONObject obj = new JSONObject(wholeJSONList);
 		JSONObject obj2= obj.getJSONObject(key);

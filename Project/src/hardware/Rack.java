@@ -28,7 +28,7 @@ public class Rack implements Structures{
 	}
 	
 	public Rack(int dc_id, int floor_id, int rack_id, String name, long start_date, long end_date){
-		this.rack_hosts = rack_hosts;
+		rack_hosts = null;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
 		this.rack_id = rack_id;
@@ -37,18 +37,25 @@ public class Rack implements Structures{
 		this.name = name;
 	}
 	
+	/** Method to add additional hosts to the list associated with the rack */
 	public void addHost(Host h){
 		rack_hosts.add(h);
 	}
 	
+	/** Method to remove hosts from the list associated with the rack */
 	public void removeHost(Host h){
 		rack_hosts.remove(h);
 	}
 	
+	/** Boolean to see if a host exists on a rack **/
 	public boolean hasHost(Host h){
 		return rack_hosts.contains(h);
 	}
-
+	
+	/** 
+	 * getMax method passes an Connection to return a JSONArray which is manipulated to get the max for a given Rack
+	 * Pass in an epoch start time and epoch end time (Both epochs in seconds)
+	 */
 	public double getMax(long start_date, long end_date) {
 		double max = 0;
 		ConnectionResults results = new ConnectionResults(dc_id, floor_id, rack_id);
@@ -61,7 +68,11 @@ public class Rack implements Structures{
 		}
 		return max;
 	}
-
+	
+	/** 
+	 * getAvergae method passes an Connection to return a JSONArray which is manipulated to get the average for a given Rack
+	 * Pass in an epoch start time and epoch end time (Both epochs in seconds)
+	 */
 	public double getAverage(long start_date, long end_date) {
 		double running_total = 0;
 		double count_recordings = 0;
@@ -74,11 +85,13 @@ public class Rack implements Structures{
 		return running_total/count_recordings;
 	}
 	
+	/** A getter to return the average figure **/
 	public String getAverageFigure(){
 		DecimalFormat df = new DecimalFormat("#.00"); 
 		return df.format(average);
 	}
 	
+	/** A getter to return the max figure **/	
 	public String getMaxFigure(){
 		DecimalFormat df = new DecimalFormat("#.00"); 
 		return df.format(max);
@@ -89,18 +102,22 @@ public class Rack implements Structures{
 		return rack_id;
 	}
 	
+	/** Getter to return the rack's floor ID **/
 	public int getFloorID() {
 		return floor_id;
 	}
 	
+	/** Getter to return the rack's data center ID **/
 	public int getDCID() {
 		return dc_id;
 	}
 	
+	/** Getter to return the rack's Name**/
 	public String getName(){
 		return name;
 	}
 	
+	/** Getter to return the list of hosts on the rack's */ 
 	public List<Host> getHosts(){
 		return rack_hosts;
 	}
