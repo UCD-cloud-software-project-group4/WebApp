@@ -205,6 +205,10 @@ var max_power = <%out.print(max);%>;
 	var hostRackID = [
 <%out.print(FrontScreen.hostRackToString(start_epoch, end_epoch));%>
 	];
+	var hostWeight= [
+<%out.print(FrontScreen.hostWeight(start_epoch, end_epoch));%>
+	];
+	
 	var hostMax = [
 <%out.print(FrontScreen.hostMax(start_epoch, end_epoch));%>
 	];
