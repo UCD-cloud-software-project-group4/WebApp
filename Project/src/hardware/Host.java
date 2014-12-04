@@ -32,7 +32,6 @@ public class Host implements Structures {
 		this.rack_id = rack_id;
 		this.host_id = host_id;
 		this.average = getAverage(start_date, end_date);
-		
 		this.max = getMax(start_date, end_date);
 		this.name = name;
 	}
@@ -63,7 +62,6 @@ public class Host implements Structures {
 
 	public double getAverage(long start_date, long end_date) {
 		double running_total = 0;
-		double count_recordings = 0;
 		ConnectionResults results = new ConnectionResults(dc_id, floor_id, rack_id, host_id);
 		JSONArray hold_power_stats = results.getUsageHost(start_date, end_date);
 		weight = hold_power_stats.length();
