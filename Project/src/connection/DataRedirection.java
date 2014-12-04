@@ -1,5 +1,4 @@
-/*This class contains utility methods which can be used to manipulate data by sending it to
- *  certain locations in various different ways */
+
 package connection;
 
 import java.io.BufferedReader;
@@ -14,9 +13,12 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 
+/**This class contains utility methods which can be used to manipulate data by sending it to
+ *  certain locations in various different ways */
 public class DataRedirection {
 	
-	// clears a given directory with the address of that directory provided as a parameter
+	/** clears a given directory with the address of that directory provided as a parameter
+	 */ 
     static void clearDirectory (String directory) {
         String files;
         File file = new File(directory);
@@ -35,7 +37,8 @@ public class DataRedirection {
         }
     }
     
-    // clears a specific file
+    /** clears a specific file 
+     */ 
     static  void clearSpecificFile (String file) throws FileNotFoundException {
         PrintStream console = System.out;
         
@@ -51,7 +54,8 @@ public class DataRedirection {
     
     
     
-    // appends text (as a String) to a file. Each String appended goes to a new line in the file
+    /** appends text (as a String) to a file. Each String appended goes to a new line in the file
+     */
     static void appendTextToFile (String input, String location) throws FileNotFoundException {
         try{
         	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(location , true)));
@@ -60,7 +64,8 @@ public class DataRedirection {
             
         }
     }
-	// this sends text (as a String) to a file but each instance of it erases any previous content in the file
+	/** this sends text (as a String) to a file but each instance of it erases any previous content in the file
+	 */ 
     static void writeTextToFile (String input, String location) {
         File file = new File(location);
         String content = input;
@@ -83,7 +88,8 @@ public class DataRedirection {
             e.printStackTrace();
         }
     }
-    // parses the HTTP stream data into a human readable JSON format
+    /** parses the HTTP stream data into a human readable JSON format
+     */ 
     static String httpToJSON (HttpURLConnection conn) throws IOException {
         String result="";
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
