@@ -57,18 +57,34 @@ public class ConnectionResults {
 	}
 	
 	public JSONArray getUsageRack(long start_time, long end_time) {
+		JSONArray result1 = null;
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/floors/" + floor_id + "/racks/" + rack_id  + "/power?starttime="+ start_time +"&endtime=" + end_time;
+		try{
 		Connection connection = new Connection(URL);
 		String result = connection.makeRequest(connection);
-		JSONArray result1 = JSONParser.parseJson(result, "power");
+		result1 = JSONParser.parseJson(result, "power");
+		}catch(Exception e){
+			URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id + "/floors/" + floor_id + "/racks/" + rack_id  + "/power?starttime=0&endtime=1417730183";
+			Connection connection = new Connection(URL);
+			String result = connection.makeRequest(connection);
+			result1 = JSONParser.parseJson(result, "power");
+		}
 		return result1;
 	}
 	
 	public JSONArray getUsageHost(long start_time, long end_time) {
+		JSONArray result1 = null;
 		URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id	+ "/floors/" + floor_id + "/racks/" + rack_id + "/hosts/" + host_id + "/power?starttime="+ start_time +"&endtime=" + end_time;
+		try{
 		Connection connection = new Connection(URL);
 		String result = connection.makeRequest(connection);
-		JSONArray result1 = JSONParser.parseJson(result, "power");
+		result1 = JSONParser.parseJson(result, "power");
+		}catch(Exception e){
+			URL = "http://localhost:8080/papillonserver/rest/datacenters/" + dc_id	+ "/floors/" + floor_id + "/racks/" + rack_id + "/hosts/" + host_id + "/power?starttime=0&endtime=1417730183";
+			Connection connection = new Connection(URL);
+			String result = connection.makeRequest(connection);
+			result1 = JSONParser.parseJson(result, "power");
+		}
 		return result1;
 	}
 	
