@@ -1,5 +1,4 @@
-/* This class enables the creation of a Connection object which is the basis for making a HTTP request to the Papillon system. Also,
- * you can request to retrieve the data obtained from such a connection and send data via the connection.   */
+
 package connection;
 
 
@@ -9,7 +8,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-
+/** This class enables the creation of a Connection object which is the basis for making 
+ * a HTTP request to the Papillon system. Also, you can request to retrieve the data obtained
+ * from such a connection and send data via the connection. 
+ */
 public class Connection {
     private String url;
     private String httpMethod = "GET";
@@ -21,13 +23,17 @@ public class Connection {
         
     }
     
+    /** Simple connection object constructor which takes a URl as parameter. This URL represents the
+     * kind of data a user wants to get from the Papillon system
+     */
     Connection (String newUrl) {
         this.url = newUrl;
         
         
     }
     
-    // opens a connection and sets the type of data to be returned
+    /** opens a HTTP connection and sets the type of data to be returned. 
+     */ 
     void connect() throws MalformedURLException, IOException {
         try {
             String connectUrl = this.url;
@@ -55,7 +61,9 @@ public class Connection {
             System.out.println("Something went terribly wrong");
         }
     }
-    // retrieves the JSON data and sends it to the specified file
+    /** retrieves the JSON data from the Papillon system and returns it as a String. This overloaded 
+     * method also allows a user to send the data to a local file for testing purposes
+     */ 
     String getDataContent( String newFile) throws MalformedURLException, IOException{
         String result = "";
         try {
@@ -74,7 +82,9 @@ public class Connection {
         return result;
     }
     
-    
+    /** retrieves the JSON data from the Papillon system and returns is as a String. This overloaded 
+     * method also allows a user to send the data to a local file for testing purposes
+     */ 
     String getDataContent() {
         String result = "";
         try {
@@ -91,6 +101,9 @@ public class Connection {
         
     }
     
+    /** This method allows a user to make a request for data from the Papillon system
+     */ 
+    
     String makeRequest(Connection connection, String location){
         String result = "";
         try {
@@ -104,6 +117,8 @@ public class Connection {
 		return result;
 	}
     
+    /** This method allows a user to make a request for data from the Papillon system.
+     */ 
     String makeRequest(Connection connection){
 		String result = "";
         try {
@@ -118,7 +133,8 @@ public class Connection {
     }
     
     
-    // closes the connection
+    /** Closes the HTTP connection to the Papillon system
+     */ 
     void closeConnect(){
         this.connection.disconnect();
     }
