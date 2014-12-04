@@ -200,7 +200,7 @@ p{
 
     function updateArrays(){
   		//Max Update
- 		
+ 		average();
   		var old_rack_max = 0;
   		for(var i = 0; i < hostRackID.length; i++){ 			
   			//If the highlighted servers RackID mathces any other Servers RackID it increments the total servers on a rack 

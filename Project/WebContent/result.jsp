@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<%@page import="joiner.FrontScreen"
-import="parser.DateParser"%>
+<%@page import="joiner.FrontScreen" import="parser.DateParser"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -8,83 +7,80 @@ import="parser.DateParser"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test for the front end</title>
 <style>
-
 html,body {
 	margin: 0px;
 	padding: 0px;
 	margin: 0px;
-	color:#333;
+	color: #333;
 }
 
-#graph{
-	position:relative;
-	width:100%;
-	height:100%;
-	top:30px;
+#graph {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 30px;
 	background-color: #528B8B;
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 0px solid #000000;
-	
 }
 
-#main{
-	float:left;
+#main {
+	float: left;
 	width: 100%;
 	height: auto;
 }
 
-#footer{
-	float:left;
+#footer {
+	float: left;
 	width: 100%;
-    height: 120px;
-    margin: 0px;
-    padding: 20px;
-    background-color: #008B45;
-    font-size: 15px;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	color:#aaa;
-	text-align: center;
-	-webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-}
-
-#belowHeader{
-	float:left;
-	width: 100%;
-    height: 60px;
-    margin: 0px;
-    padding: 10px;
-    background-color: #333;
-    -webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-}
-
-#belowHeader h2{
+	height: 120px;
+	margin: 0px;
+	padding: 20px;
+	background-color: #008B45;
 	font-size: 15px;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	color:#aaa;
+	color: #aaa;
 	text-align: center;
-	
+	-webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+#belowHeader {
+	float: left;
+	width: 100%;
+	height: 60px;
+	margin: 0px;
+	padding: 10px;
+	background-color: #333;
+	-webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+#belowHeader h2 {
+	font-size: 15px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #aaa;
+	text-align: center;
 }
 
 #header {
-	float:left;
-    width: 100%;
-    height: 240px;
-    margin: 0px;
-    padding: 0px;
+	float: left;
+	width: 100%;
+	height: 240px;
+	margin: 0px;
+	padding: 0px;
 }
 
-#header img{
+#header img {
 	max-height: 100%;
 	min-height: 100%;
 	max-width: 100%;
 	min-width: 100%;
-    margin: 0px;   
+	margin: 0px;
 }
 
 .outerRack {
@@ -97,9 +93,9 @@ html,body {
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 0px solid #000000;
-	-webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 .innerRack {
@@ -154,8 +150,7 @@ html,body {
 	border: 0px solid #000000;
 }
 
-#information {<img src="graph.png" width="100%">
-	margin-left: 0px;
+#information { <img src="graph.png" width="100%"> margin-left:0px;
 	margin-top: 0px;
 	padding: 12px;
 	float: left;
@@ -166,9 +161,9 @@ html,body {
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 0px solid #000000;
-	-webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 p {
@@ -179,24 +174,29 @@ p {
 }
 </style>
 <script>
-<% 
-double max = Double.parseDouble(request.getParameter("max_rack_power"));
-int year = Integer.parseInt(request.getParameter("start_date_year"));
-int month = (Integer.parseInt(request.getParameter("start_date_month"))-1); //-1 as months start at 0 with epoch
-int day = Integer.parseInt(request.getParameter("start_date_day"));
-DateParser dp = new DateParser(year,month,day);
-long start_epoch = dp.parse(); 
+	
+<%double max = Double.parseDouble(request
+					.getParameter("max_rack_power"));
+			int year = Integer
+					.parseInt(request.getParameter("start_date_year"));
+			int month = (Integer.parseInt(request
+					.getParameter("start_date_month")) - 1); //-1 as months start at 0 with epoch
+			int day = Integer.parseInt(request.getParameter("start_date_day"));
+			DateParser dp = new DateParser(year, month, day);
+			long start_epoch = dp.parse();
 
-int year_end = Integer.parseInt(request.getParameter("end_date_year"));
-int month_end = (Integer.parseInt(request.getParameter("end_date_month"))-1); //-1 as months start at 0 with epoch
-int day_end = Integer.parseInt(request.getParameter("end_date_day"));
-DateParser dp2 = new DateParser(year_end,month_end,day_end);
-long end_epoch = dp2.parse();
-%>
-//These arrays hold the power information for each server
-var max_power = <%out.print(max);%>;
-
-
+			int year_end = Integer.parseInt(request
+					.getParameter("end_date_year"));
+			int month_end = (Integer.parseInt(request
+					.getParameter("end_date_month")) - 1); //-1 as months start at 0 with epoch
+			int day_end = Integer
+					.parseInt(request.getParameter("end_date_day"));
+			DateParser dp2 = new DateParser(year_end, month_end, day_end);
+			long end_epoch = dp2.parse();%>
+	//These arrays hold the power information for each server
+	var max_power =
+<%out.print(max);%>
+	;
 <%//Initiates all the datacenters, floors, racks and hosts%>
 	//These arrays hold the power information for each server
 	var hostID = [
@@ -205,10 +205,10 @@ var max_power = <%out.print(max);%>;
 	var hostRackID = [
 <%out.print(FrontScreen.hostRackToString(start_epoch, end_epoch));%>
 	];
-	var hostWeight= [
+	var hostWeight = [
 <%out.print(FrontScreen.hostWeight(start_epoch, end_epoch));%>
 	];
-	
+
 	var hostMax = [
 <%out.print(FrontScreen.hostMax(start_epoch, end_epoch));%>
 	];
@@ -233,12 +233,35 @@ var max_power = <%out.print(max);%>;
 	var test = 0;
 	var current_host = 0;
 	var current_rack = 0;
+	
+	 function average(){
+	    	for(var i=0; i < rackID.length; i++){
+	    		var product = 0;
+	    		var weight = 0;
+	    		for(var j = 0; j < hostAverage.length; j++){
+	    			if(rackID[i] == hostRackID[j]){
+	    				product = product + (hostAverage[j]*hostWeight[j]);
+	    				weight = weight + hostWeight[j];
+	    			}
+	    		}
+	      		document.getElementById("ra"+hostRackID[i]).innerHTML="Estimated Average: "+(product/weight).toFixed(2);
+
+	    		
+	    		
+	    	}
+	    	
+	    	
+	    	
+	    }
+	
 	//This displays the server info
 	function displayServerInfo(element, number) {
 		document.getElementById("information").innerHTML = "<p>Server Number: "
-				+ parseInt(hostID[number]) + "</p><p>Average: " + hostAverage[number] + "kWhr </p><p>Max Power: " + hostMax[number] +"kWhr</p>";
-				var elements = document.getElementsByName("server");
-				
+				+ parseInt(hostID[number]) + "</p><p>Average: "
+				+ hostAverage[number] + "kWhr </p><p>Max Power: "
+				+ hostMax[number] + "kWhr</p>";
+		var elements = document.getElementsByName("server");
+
 		for (var i = 0; i < elements.length; i++) {
 			elements.item(i).style.opacity = "1.0";
 		}
@@ -260,9 +283,9 @@ var max_power = <%out.print(max);%>;
 	function allowDrop(ev) {
 		ev.preventDefault();
 	}
-	
-	
+
 	function updateArrays() {
+		average();
 		//Max Update
 		var old_rack_max = 0;
 		for (var i = 0; i < hostRackID.length; i++) {
@@ -279,7 +302,7 @@ var max_power = <%out.print(max);%>;
 		rackMax[hostRackID[current_host] - 1] = old_rack_max.toFixed(2);
 		document.getElementById("rm" + hostRackID[current_host]).innerHTML = "Estimated Maximum: "
 				+ rackMax[hostRackID[current_host] - 1];
-		
+
 		//Average Update
 		var old_rack_average = 0;
 		var old_host_count = 0;
@@ -299,11 +322,10 @@ var max_power = <%out.print(max);%>;
 		}
 		document.getElementById("ra" + hostRackID[current_host]).innerHTML = "Estimated Average: "
 				+ rackAverage[hostRackID[current_host] - 1];
-		
+
 		//Switch the servers rack to the new one it was dropped into
 		hostRackID[current_host] = current_rack;
-		
-		
+
 		var new_rack_max = 0;
 		for (var i = 0; i < hostRackID.length; i++) {
 			//If the highlighted servers RackID mathces any other Servers RackID it increments the total servers on a rack
@@ -320,23 +342,25 @@ var max_power = <%out.print(max);%>;
 				+ rackMax[hostRackID[current_host] - 1];
 		// This changes the color of the racks, where red means the rack is not being used efficiently,
 		// amber means it could be better, and green means it's used effectively
-		
-		for(var i=0; i<rackID.length;i++){
-            var str = document.getElementById("rm"+rackID[i]).innerHTML.toString().split(":");
-           
-            if(parseFloat(str[1])>max_power){
-                    document.getElementById("rack"+rackID[i]).style.background = "red";
-            }
-           
-            else if((parseFloat(str[1]))<max_power*0.85){
-                    document.getElementById("rack"+rackID[i]).style.background = "orange";
-            }
-           
-            else if((parseFloat(str[1]))>max_power*0.85 && parseFloat(str[1])<max_power){
-                    document.getElementById("rack"+rackID[i]).style.background = "green";
-            }
-    	}
-		
+
+		for (var i = 0; i < rackID.length; i++) {
+			var str = document.getElementById("rm" + rackID[i]).innerHTML
+					.toString().split(":");
+
+			if (parseFloat(str[1]) > max_power) {
+				document.getElementById("rack" + rackID[i]).style.background = "red";
+			}
+
+			else if ((parseFloat(str[1])) < max_power * 0.85) {
+				document.getElementById("rack" + rackID[i]).style.background = "orange";
+			}
+
+			else if ((parseFloat(str[1])) > max_power * 0.85
+					&& parseFloat(str[1]) < max_power) {
+				document.getElementById("rack" + rackID[i]).style.background = "green";
+			}
+		}
+/*
 		//Average Update (reset the count and total averages)
 		var new_rack_average = 0;
 		var new_host_count = 0;
@@ -350,20 +374,22 @@ var max_power = <%out.print(max);%>;
 		rackAverage[hostRackID[current_host] - 1] = (new_rack_average / new_host_count)
 				.toFixed(2);
 		document.getElementById("ra" + hostRackID[current_host]).innerHTML = "Estimated Average: "
-				+ rackAverage[hostRackID[current_host] - 1];
+				+ rackAverage[hostRackID[current_host] - 1];*/
 	}
 </script>
 </head>
 <body>
-<div id="header">
-	<a href="index.jsp"><img src="logo.png" alt="Papillon Image" /></a>
-</div>
-<div id="belowHeader"><h2>Below show's all Racks, inside each rack show's their server. The box on the left will display any server data once clicked.</h2></div>
+	<div id="header">
+		<a href="index.jsp"><img src="logo.png" alt="Papillon Image" /></a>
+	</div>
+	<div id="belowHeader">
+		<h2>Below show's all Racks, inside each rack show's their server.
+			The box on the left will display any server data once clicked.</h2>
+	</div>
 	<div id="main">
 		<div id='serverInfo'>
-			<div id='information'>
-			</div>
-			<a href="Graph.png">	<img  id="graph" src="Graph.png" width="100%"></a>
+			<div id='information'></div>
+			<a href="Graph.png"> <img id="graph" src="Graph.png" width="100%"></a>
 		</div>
 		<%=FrontScreen.serverAndRackCreation(start_epoch, end_epoch)%>
 		<div id="sysinfo"></div>
@@ -371,12 +397,9 @@ var max_power = <%out.print(max);%>;
 	</div>
 	<div id="footer">
 		<p>
-			- MSc Computer Science (conversion) -<br />
-			Andrew Duignan<br />
-			Colm Glennon<br />
-			Jason De Paor<br />
-			Jonathan Cody<br />
-			Ronan Frawley
+			- MSc Computer Science (conversion) -<br /> Andrew Duignan<br />
+			Colm Glennon<br /> Jason De Paor<br /> Jonathan Cody<br /> Ronan
+			Frawley
 		</p>
 	</div>
 </body>
