@@ -125,7 +125,7 @@ p{
 	var hostMax = [4.27,4.31,4.31,4.31,3.12,3.05];
     var hostAverage = [20,40,50,300,700,1000];
     var hostName = ["Host1","Host2","Host3","Host4","80","Host 6"];
-	var hostWeight=[2,4,5,6,7,8];
+	var hostWeight=[2,4,5,6,8,1];
     var rackID = [1,2,3];
     var rackMax = [12.89,4.31,3.05];
     var rackAverage = [5.16,3.11,3.01];
