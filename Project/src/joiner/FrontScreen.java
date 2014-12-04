@@ -5,17 +5,12 @@ import hardware.Floor;
 import hardware.Host;
 import hardware.Rack;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import parser.DateParser;
 import parser.JSONParser;
 import connection.ConnectionResults;
 
@@ -100,7 +95,25 @@ public class FrontScreen {
 			}
 		}
 	}
-
+	
+	/**Creates an array that shows each server's weighting based on the number of timestamps*/
+	public static String hostWeight(long start, long end){
+		String hosts = "";
+		start(start, end);
+		for (DataCenter dc : datacenters) {
+			for (Floor floor : dc.getFloors()) {
+				for (Rack rack : floor.getRacks()) {
+					for (Host host : rack.getHosts()) {
+						hosts += "" + host.getWeight() + ",";
+					}
+				}
+			}
+		}
+		reset();
+		return hosts.substring(0, hosts.length() - 1);
+	}
+	
+	/**Prints the server and rack divs dynamically onto the JSP page*/
 	public static String serverAndRackCreation(long start, long end) {
 		String output = "";
 		start(start, end);
@@ -137,7 +150,8 @@ public class FrontScreen {
 	}
 
 	
-
+	/**Creates an array that shows the associated rack that each host
+	 * belongs to*/
 	public static String hostRackToString(long start, long end) {
 		String hostrackID = "";
 		start(start, end);
@@ -154,6 +168,7 @@ public class FrontScreen {
 		return hostrackID.substring(0, hostrackID.length() - 1);
 	}
 
+	/**Creates an array of the Host IDs*/
 	public static String hostToString(long start, long end) {
 		String hosts = "";
 		start(start, end);
@@ -170,6 +185,7 @@ public class FrontScreen {
 		return hosts.substring(0, hosts.length() - 1);
 	}
 
+	/**Creates an array of each host's average power*/
 	public static String hostAverage(long start, long end) {
 		String hosts = "";
 		start(start, end);
@@ -186,6 +202,7 @@ public class FrontScreen {
 		return hosts.substring(0, hosts.length() - 1);
 	}
 
+	/**Creates and array of each host's max power*/
 	public static String hostMax(long start, long end) {
 		String hosts = "";
 		start(start, end);
@@ -202,6 +219,7 @@ public class FrontScreen {
 		return hosts.substring(0, hosts.length() - 1);
 	}
 
+	/**Creates an array of host names*/
 	public static String hostName(long start, long end) {
 		String hosts = "";
 		start(start, end);
@@ -218,6 +236,7 @@ public class FrontScreen {
 		return hosts.substring(0, hosts.length() - 1);
 	}
 
+	/**Creates an array of rack IDs*/
 	public static String rackToString(long start, long end) {
 		String racks = "";
 		start(start, end);
@@ -232,6 +251,7 @@ public class FrontScreen {
 		return racks.substring(0, racks.length() - 1);
 	}
 
+	/**Creates an array of each rack's average power*/
 	public static String rackAverage(long start, long end) {
 		String racks = "";
 		start(start, end);
@@ -246,6 +266,7 @@ public class FrontScreen {
 		return racks.substring(0, racks.length() - 1);
 	}
 
+	/**Creates an array of each rack;s max power*/
 	public static String rackMax(long start, long end) {
 		String racks = "";
 		start(start, end);
@@ -260,6 +281,7 @@ public class FrontScreen {
 		return racks.substring(0, racks.length() - 1);
 	}
 
+	/**Creates an array of each rack's name*/
 	public static String rackName(long start, long end) {
 		String racks = "";
 		start(start, end);
@@ -274,11 +296,14 @@ public class FrontScreen {
 		return racks.substring(0, racks.length() - 1);
 	}
 
+	/**Removes the datacenter data from memory*/
 	public static void reset() {
 		datacenters = new ArrayList<DataCenter>();
 	}
 
-	// public static void main(String[] args){
+	
+	/**Populates all the hardware classes with the correct info
+	 * for DCs, floors, racks and hosts*/
 	public static void start(long start, long end) {
 		reset();
 		ConnectionResults connection = new ConnectionResults(1, 1); // We know
@@ -310,10 +335,5 @@ public class FrontScreen {
 		}
 	}
 
-
-
-	public static void main(String[] args) {
-		//start(start, end);
-		//System.out.println(rackToString());
-	}
+	
 }

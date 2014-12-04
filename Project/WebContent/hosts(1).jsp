@@ -123,9 +123,9 @@ p{
     var hostID = [1,2,3,4,5,6];
     var hostRackID = [1,1,1,2,2,3];
 	var hostMax = [4.27,4.31,4.31,4.31,3.12,3.05];
-    var hostAverage = [3.12,3.12,3.13,3.13,3.02,3.01];
+    var hostAverage = [20,40,50,300,700,1000];
     var hostName = ["Host1","Host2","Host3","Host4","80","Host 6"];
-
+	var hostWeight=[2,4,5,6,7,8];
     var rackID = [1,2,3];
     var rackMax = [12.89,4.31,3.05];
     var rackAverage = [5.16,3.11,3.01];
@@ -134,6 +134,26 @@ p{
     var current_host = 0;
     var current_rack =0;
     var max_power;
+    
+    function average(){
+    	for(var i=0; i < rackID.length; i++){
+    		var product = 0;
+    		var weight = 0;
+    		for(var j = 0; j < hostAverage.length; j++){
+    			if(rackID[i] == hostRackID[j]){
+    				product = product + (hostAverage[j]*hostWeight[j]);
+    				weight = weight + hostWeight[j];
+    			}
+    		}
+      		document.getElementById("ra"+hostRackID[i]).innerHTML="Estimated Average: "+(product/weight).toFixed(2);
+
+    		
+    		
+    	}
+    	
+    	
+    	
+    }
     
   
       
@@ -165,7 +185,7 @@ p{
     function drop(ev, passed_id) {		
         current_rack=passed_id;
         updateArrays();
-       	
+       	average();
         ev.preventDefault();       
         var data = ev.dataTransfer.getData("text/html");
         ev.target.appendChild(document.getElementById(data));
@@ -193,7 +213,7 @@ p{
   		}
   		rackMax[hostRackID[current_host]-1] = old_rack_max.toFixed(2);
   		document.getElementById("rm"+hostRackID[current_host]).innerHTML="Estimated Maximum: "+rackMax[hostRackID[current_host]-1];
-  		
+  		/*
   		//Average Update
   		var old_rack_average = 0;  		
   		var old_host_count = 0; 
@@ -211,7 +231,7 @@ p{
   			rackAverage[hostRackID[current_host]-1] = (old_rack_average/old_host_count).toFixed(2);
   		}
   		document.getElementById("ra"+hostRackID[current_host]).innerHTML="Estimated Average: "+rackAverage[hostRackID[current_host]-1];
-
+*/
   		//Switch the servers rack to the new one it was dropped into
   		hostRackID[current_host]=current_rack;  	
   		
@@ -248,7 +268,7 @@ p{
   		}
   		
   		
-  		
+  		/*
   		//Average Update (reset the count and total averages)
   		var new_rack_average = 0;  		
   		var new_host_count = 0;   		
@@ -262,7 +282,7 @@ p{
   		}
   		rackAverage[hostRackID[current_host]-1] = (new_rack_average/new_host_count).toFixed(2);
   		document.getElementById("ra"+hostRackID[current_host]).innerHTML="Estimated Average: "+rackAverage[hostRackID[current_host]-1];
- 
+ */
   	}
     
   

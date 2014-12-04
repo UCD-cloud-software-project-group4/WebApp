@@ -14,6 +14,7 @@ public class Host implements Structures {
 	private double average;
 	private double max;
 	private String name;
+	private long weight;
 
 	public Host() {
 		dc_id = 0;
@@ -31,6 +32,7 @@ public class Host implements Structures {
 		this.rack_id = rack_id;
 		this.host_id = host_id;
 		this.average = getAverage(start_date, end_date);
+		
 		this.max = getMax(start_date, end_date);
 		this.name = name;
 	}
@@ -64,12 +66,13 @@ public class Host implements Structures {
 		double count_recordings = 0;
 		ConnectionResults results = new ConnectionResults(dc_id, floor_id, rack_id, host_id);
 		JSONArray hold_power_stats = results.getUsageHost(start_date, end_date);
-		count_recordings = hold_power_stats.length();
+		weight = hold_power_stats.length();
+		
 		
 		for(int x=0; x< hold_power_stats.length(); x++){
 			running_total += hold_power_stats.getJSONObject(x).getDouble("power");
 		}
-		return running_total/count_recordings;
+		return running_total/weight;
 	}
 
 	/** Getter to return the host's ID **/
@@ -114,6 +117,11 @@ public class Host implements Structures {
 	/** Getter to return a String name **/
 	public String getName(){
 		return name;
+	}
+	
+	/**Sets the weight for each host*/
+	public long getWeight(){
+		return weight;
 	}
 	
 
