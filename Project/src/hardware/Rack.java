@@ -28,7 +28,6 @@ public class Rack implements Structures{
 	}
 	
 	public Rack(int dc_id, int floor_id, int rack_id, String name, long start_date, long end_date){
-		rack_hosts = null;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
 		this.rack_id = rack_id;

@@ -57,14 +57,7 @@ form {
 			<input type="text" name="max_rack_power" />
 			Enter Max Capacity Per Rack	
 		</p>
-		<p>
-			<input type="radio" name="timescale_options" value="get_by_current"
-				checked /> Get Current Papillon Information
-		</p>
-		<p>
-			<input type="radio" name="timescale_options" value="get_by_timescale" />
-			Get Papillon Information by Time
-		</p>
+	
 		<p>
 			Starting<br /> <select name="start_date_day">
 				<option value="01">01</option>

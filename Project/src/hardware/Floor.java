@@ -15,7 +15,6 @@ public class Floor {
 	}
 	
 	public Floor(int dc_id, int floor_id){
-		floor_racks = null;
 		this.dc_id = dc_id;
 		this.floor_id = floor_id;
 	}

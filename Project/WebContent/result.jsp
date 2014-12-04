@@ -17,16 +17,25 @@ html,body {
 }
 
 #graph{
-	position:relative;
-	width:100%;
-	height:100%;
-	top:30px;
-	background-color: #528B8B;
+	position:float;
+	width:252px;
+	height:165px;
+	background-color: #333;
+	border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+}
+#shadow{
+	position:float;
+	width:251px;
+	height:399px;
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 0px solid #000000;
-	
+	-webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 #main{
@@ -40,8 +49,9 @@ html,body {
 	width: 100%;
     height: 120px;
     margin: 0px;
+    margin-top: 50px;
     padding: 20px;
-    background-color: #008B45;
+    background-color: #e20;
     font-size: 15px;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color:#aaa;
@@ -56,6 +66,7 @@ html,body {
 	width: 100%;
     height: 60px;
     margin: 0px;
+    margin-bottom: 50px;
     padding: 10px;
     background-color: #333;
     -webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
@@ -148,27 +159,24 @@ html,body {
 	background-color: white;
 	margin-left: 25px;
 	margin-top: 25px;
+	margin-right: 25px;
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 0px solid #000000;
 }
 
-#information {<img src="graph.png" width="100%">
+#information {
 	margin-left: 0px;
 	margin-top: 0px;
 	padding: 12px;
 	float: left;
-	height: 188px;
+	height: 138px;
 	width: 228px;
-	background-color: #528B8B;
-	border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	border: 0px solid #000000;
-	-webkit-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	background-color: #333;
+	border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
 }
 
 p {
@@ -176,6 +184,33 @@ p {
 	padding-left: 10px;
 	color: white;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.bttn {
+	outline: none;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
+	border: 0px;
+	font-family: Arial;
+	color: #eee;
+	font-size: 20px;
+	background: #e20;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	width: 100%;
+}
+.bttn:hover {
+	background: #f31;
+	text-decoration: none;
+}
+#btttn{
+	margin-left: 0px;
+	margin-top: 0px;
+	padding: 12px;
+	float: left;
+	height: 50px;
+	width: 228px;
+	background-color: #333;
 }
 </style>
 <script>
@@ -357,9 +392,16 @@ var max_power = <%out.print(max);%>;
 <div id="belowHeader"><h2>Below show's all Racks, inside each rack show's their server. The box on the left will display any server data once clicked.</h2></div>
 	<div id="main">
 		<div id='serverInfo'>
-			<div id='information'>
+			<div id='shadow'>
+				<div id='information'>
+				</div>
+				<div id='btttn'>
+					<form name='myform' action='help.html' method='POST'>
+						<input type='submit' class='bttn' value='Help Doc!'>
+					</form>
+				</div>
+				<a href="Graph.png">	<img  id="graph" src="Graph.png" width="100%"></a>
 			</div>
-			<a href="Graph.png">	<img  id="graph" src="Graph.png" width="100%"></a>
 		</div>
 		<%=FrontScreen.serverAndRackCreation(start_epoch, end_epoch)%>
 		<div id="sysinfo"></div>
